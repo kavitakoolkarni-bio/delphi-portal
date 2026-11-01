@@ -385,9 +385,9 @@ body[data-mode="site"] .app{display:none}body[data-mode="app"] .site{display:non
 
   <div class="sec"><div class="split"><div><div class="eyebrow accent">TRY THE REAL THING</div><h3>Every open problem comes with a computation you can start.</h3><p>Each question on the Open problems page has a button that launches the matching job on the shared codebase: re-check a model against specimens, fit a 1917 grid to museum outlines, predict a lineage, verify a theorem. You watch the log as it runs and keep a signed copy of what came out.</p><ul><li>Practice mode works anywhere, right now, replaying results from the signed record, so you can learn the tools before touching real compute.</li><li>Live mode connects to a copy of morpholib run by you or your institution.</li><li>Nothing published is ever overwritten. A new result points to the old one, and both stay citable.</li></ul><button class="text-button" data-go="problems">Browse the open problems <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button></div><div class="split-media" style="border:0;background:transparent;min-height:0"><div class="console" id="land-console"><div class="console-bar"><i></i><i></i><i></i><span>delphi · run thompson-fit · scarus→pomacanthus</span><i class="status-dot"></i></div><div class="console-body" id="land-console-body"></div></div></div></div></div>
 
-  <div class="band"><div class="band-in"><div><b>116</b><span>models rebuilt as working programs and checked, across 57 kinds of organism</span></div><div><b>25</b><span>mathematical rules proved correct by a proof-checking program</span></div><div><b>201</b><span>signed statements of results, published where no one can quietly edit them</span></div><div><b>~50 Myr</b><span>how far back in time shape predictions stay reliable</span></div><div><b>16</b><span>open problems worked on; 11 answered, 5 honestly still open</span></div></div></div>
+  <div class="band"><div class="band-in"><div><b>116</b><span>models rebuilt as working programs and checked, across 57 kinds of organism</span></div><div><b>25</b><span>mathematical rules proved correct by a proof-checking program</span></div><div><b>201</b><span>signed statements of results, published where no one can quietly edit them</span></div><div><b>~50 Myr</b><span>how far back in time shape predictions stay reliable</span></div><div><b id="band-problems">16</b><span id="band-problems-note">open problems worked on; 11 answered, 5 honestly still open</span></div></div></div>
 
-  <div class="wrap"><div class="sec"><div class="sec-head"><div><div class="eyebrow">OPEN PROBLEMS</div><h2>Puzzles that now have an answer, and puzzles that still don’t.</h2></div><button class="text-button" data-go="problems">All 16 problems <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button></div><div class="problem-grid" id="land-problems"></div></div>
+  <div class="wrap"><div class="sec"><div class="sec-head"><div><div class="eyebrow">OPEN PROBLEMS</div><h2>Puzzles that now have an answer, and puzzles that still don’t.</h2></div><button class="text-button" id="land-all-problems" data-go="problems">All 16 problems <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button></div><div class="problem-grid" id="land-problems"></div></div>
 
     <div class="sec"><div class="sec-head"><div><div class="eyebrow">EVIDENCE</div><h2>We publish what went wrong, not just what went right.</h2></div><button class="text-button" data-go="evidence">Read the evidence <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button></div><div class="pillar-grid"><article class="pillar"><span class="mini-glyph"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-methods"/></svg></span><h3>4 of 7 sealed predictions held</h3><p>Guesses for 10,888 species were written down and sealed before anyone looked at the answers. Three of seven claims failed, and the failures are on the page.</p></article><article class="pillar"><span class="mini-glyph"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-compare"/></svg></span><h3>Two independent referees</h3><p>Every major model is scored by two automated reviewers that never see each other’s work. When they disagree by 37 points, the disagreement is published, not averaged away.</p></article><article class="pillar"><span class="mini-glyph"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-info"/></svg></span><h3>A limit, stated in advance</h3><p>Shape prediction works well within about 50 million years and breaks down beyond that. The breakdown was predicted before the test and then found in the data.</p></article></div></div>
 
@@ -399,6 +399,7 @@ body[data-mode="site"] .app{display:none}body[data-mode="app"] .site{display:non
 <!-- ============ PRODUCT ============ -->
 <section class="page" data-page="product">
   <div class="wrap"><div class="sec" style="padding-top:54px"><div class="sec-head"><div><div class="eyebrow accent">EXPLORE</div><h2>One workbench, four instruments, and a way to run real computations.</h2></div><p>The workbench runs entirely in your browser; nothing is installed and nothing is sent anywhere. Each instrument below is explained first in plain terms and then in the language a specialist would use.</p></div>
+    <div id="explore-live"></div>
     <div class="split"><div><div class="eyebrow">01 · PREDICT</div><h3>Predict a body plan at any point in evolutionary time.</h3><p><b>In plain terms:</b> choose a group of fishes and slide back through time; the model draws the body shape it expects their ancestor to have had, with a band showing how uncertain it is. <b>For specialists:</b> shape is encoded as seven linearised Thompson grid modes or the full landmark space, a Pagel-λ process is conditioned on a dated tree, and the lineage state is returned with its 95% envelope.</p><ul><li>Horizon banner says whether you are inside the 50 Myr range where skill was demonstrated blind</li><li>Skill decomposition: consensus, nearest relative, tree conditioning, full space</li><li>Every prediction states the fossil that would falsify it</li></ul><button class="text-button" data-go="predict">Open Predict <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button></div><div class="split-media"><canvas data-thumb="fish" aria-hidden="true"></canvas></div></div>
     <div class="split flip"><div><div class="eyebrow">02 · GENERATE</div><h3>Six classic models of form, running live.</h3><p><b>In plain terms:</b> each card is a famous idea about how a shape comes to be, with a few dials you can turn and a picture that responds. <b>For specialists:</b> Thompson coordinate grids, Gray–Scott reaction–diffusion, Raup shell coiling in 3D, golden-angle phyllotaxis, Rule 30 and Rule 90 shell pigment, and a bioelectric flatworm that regrows two heads when gap junctions are blocked.</p><ul><li>Audit score and both referee ratings on every card</li><li>Save any state to the experiment notebook and compare runs</li><li>Export parameters as JSON or the visualisation as PNG</li></ul><button class="text-button" data-go="simulate">Open the form laboratory <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button></div><div class="split-media"><canvas data-thumb="pattern" aria-hidden="true"></canvas></div></div>
     <div class="split"><div><div class="eyebrow">03 · FIT</div><h3>Put a 1917 idea to the test on real museum outlines.</h3><p><b>In plain terms:</b> D’Arcy Thompson claimed one fish could be turned into a related one by bending a grid. For thirty years computers said he was wrong. Here you can see why the computers were measuring the wrong thing. <b>For specialists:</b> his six species pairs fitted two ways, to 17 skeletal landmarks and to 600-point outlines, with mismatch, a box-stretch null, and the minimum Jacobian showing the grid never folds.</p><ul><li>Silhouette mismatch and overlap for three methods</li><li>Homologous fin-tip accuracy: box stretch vs curved grid</li><li>Schematic warp updates with your choice</li></ul><button class="text-button" data-go="evaluate">Open Fit to specimens <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button></div><div class="split-media"><canvas data-thumb="warp" aria-hidden="true"></canvas></div></div>
@@ -413,7 +414,7 @@ body[data-mode="site"] .app{display:none}body[data-mode="app"] .site{display:non
 
 <!-- ============ OPEN PROBLEMS ============ -->
 <section class="page" data-page="problems">
-  <div class="wrap"><div class="sec" style="padding-top:54px"><div class="sec-head"><div><div class="eyebrow accent">OPEN PROBLEMS</div><h2>Sixteen puzzles about the shape of life, each with a computation behind it.</h2><p>A puzzle here is a place where a trusted idea and the measurements disagreed. <b>Resolved</b> means the disagreement has been explained with a number. <b>Proved</b> means a proof-checking program or an exhaustive search has confirmed it. <b>Partial</b> and <b>open</b> are our own honest statement of what remains. Each card says what was believed, what is known now, and lets you start the matching job.</p></div><div class="filters problem-filters" id="site-problem-filters"><button class="chip" data-pf="all" aria-pressed="true">All</button><button class="chip" data-pf="resolved">Resolved</button><button class="chip" data-pf="proved">Proved</button><button class="chip" data-pf="partial">Partial</button><button class="chip" data-pf="open">Still open</button></div></div>
+  <div class="wrap"><div class="sec" style="padding-top:54px"><div class="sec-head"><div><div class="eyebrow accent">OPEN PROBLEMS</div><h2 id="problems-title">Questions the Frontier register is still working.</h2><p id="problems-lead">A puzzle here is a place where a trusted idea and the measurements disagreed. <b>Resolved</b> means the disagreement has been explained with a number. <b>Proved</b> means a proof-checking program or an exhaustive search has confirmed it. <b>Partial</b> and <b>open</b> are our own honest statement of what remains. Each card says what was believed, what is known now, and lets you start the matching job.</p></div><div class="filters problem-filters" id="site-problem-filters"><button class="chip" data-pf="all" aria-pressed="true">All</button><button class="chip" data-pf="resolved">Resolved</button><button class="chip" data-pf="proved">Proved</button><button class="chip" data-pf="partial">Partial</button><button class="chip" data-pf="open">Still open</button></div></div>
     <div class="problem-grid" id="site-problem-grid"></div>
     <p class="small problem-note" id="site-problem-count"></p>
   </div>
@@ -422,6 +423,7 @@ body[data-mode="site"] .app{display:none}body[data-mode="app"] .site{display:non
 <!-- ============ EVIDENCE ============ -->
 <section class="page" data-page="evidence">
   <div class="wrap"><div class="sec" style="padding-top:54px"><div class="sec-head"><div><div class="eyebrow accent">EVIDENCE</div><h2>A model earns the right to make claims only after it has been checked.</h2><p>Before any model here is allowed to predict anything, it goes through the same twelve steps: its data are locked, its rules are proved, its program is compared with real specimens, two independent reviewers score it, and the scores are signed so that nobody, including us, can quietly change them later.</p></div><button class="text-button" data-go="methods">Full methods in the workspace <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button></div>
+    <div id="evidence-live"></div>
     <div class="panel"><div class="panel-b"><div class="flow claim-flow"><div class="fx"><b>1–3 Scout and lock</b>pick the paper, extract equations, pin data by SHA-256</div><span class="arr">→</span><div class="fx"><b>4 Pin the rules</b>core laws as Lean 4 theorems</div><span class="arr">→</span><div class="fx"><b>5–6 Script and compare</b>one program, output beside specimens</div><span class="arr">→</span><div class="fx"><b>7–8 Audit and measure</b>two referees, independent residuals</div><span class="arr">→</span><div class="fx hi"><b>9–12 Sign, publish, remediate</b>nanopubs with trusty URIs; loop until clean</div></div></div></div>
     <div class="twocol" style="margin-top:18px"><div class="panel fig"><div class="panel-h"><h3>How faithfully each model follows its paper and its organism</h3></div><div class="panel-b"><p class="small" style="margin-bottom:10px">Bar: primary assessor. Mark: blinded second assessor from another company.</p><div id="site-scoreboard"></div></div></div><div class="panel fig"><div class="panel-h"><h3>Prediction beats copying the nearest relative to ~50 Myr, then collapses</h3></div><div class="panel-b"><p class="small" style="margin-bottom:10px">Median Procrustes RMS of 2,229 held-out species by time since the species split from its nearest training relative.</p><div id="site-horizon"></div></div></div></div>
     <div class="panel" style="margin-top:18px"><div class="panel-h"><h3>The blind test: predictions were hashed and committed before the comparison data was opened</h3></div><div class="panel-b"><div class="tbl"><table><thead><tr><th>Hypothesis</th><th>Result</th><th>Verdict</th></tr></thead><tbody><tr><td>Within 50 Myr of a training species, the full model beats the consensus on body depth</td><td>n = 1,122; median error 0.038 vs 0.093; r = 0.87 predicted vs observed</td><td class="ok">Held</td></tr><tr><td>…and beats copying the nearest training relative</td><td>0.038 vs 0.040, a 4% gain, p = 0.06</td><td class="bad">Did not hold</td></tr><tr><td>95% intervals cover 85–97% of species within 50 Myr</td><td>92.6% coverage</td><td class="ok">Held</td></tr><tr><td>Beyond 50 Myr, no better than the consensus</td><td>Much better than the reef-fish consensus; degrades to a clade-wide prior instead</td><td class="bad">Did not hold as phrased</td></tr><tr><td>Error rises monotonically with horizon</td><td>ρ = 0.86, 4 of 6 steps</td><td class="bad">Did not hold</td></tr><tr><td>The 7 Thompson modes are worse than the full space but beat the consensus</td><td>0.059 vs 0.038 vs 0.093</td><td class="ok">Held</td></tr><tr><td>Caudal-peduncle depth replicates the primary result</td><td>Error ratio 0.50</td><td class="ok">Held</td></tr></tbody></table></div><p class="small" style="margin-top:12px">Preregistration and outcome are both nanopublications; the production copy of the preregistration carries the same trusty URI as the copy published before unblinding, which proves its content did not change.</p></div></div>
@@ -432,6 +434,7 @@ body[data-mode="site"] .app{display:none}body[data-mode="app"] .site{display:non
 <!-- ============ DEVELOPERS ============ -->
 <section class="page" data-page="docs">
   <div class="wrap"><div class="sec" style="padding-top:54px"><div class="sec-head"><div><div class="eyebrow accent">DATA &amp; CODE</div><h2>Everything here is open: the code, the data, and the interface between them.</h2><p>The workbench is a single file you can download and host anywhere. Below is the small interface it uses to talk to a running copy of morpholib, so a lab or institution can connect its own compute without changing the page. If you are not a developer, the Take part page is the easier door.</p></div><div class="mode-pill" id="docs-mode"><i></i> mock mode</div></div>
+    <div id="docs-sources"></div>
     <div class="docs"><nav class="docs-toc" aria-label="On this page"><a href="#docs" data-anchor="d-quick">Quickstart</a><a href="#docs" data-anchor="d-auth">Authentication</a><a href="#docs" data-anchor="d-endpoints">Endpoints</a><a href="#docs" data-anchor="d-runs">Run types and payloads</a><a href="#docs" data-anchor="d-events">Run lifecycle and events</a><a href="#docs" data-anchor="d-artifacts">Artifacts and nanopubs</a><a href="#docs" data-anchor="d-webhooks">Webhooks</a><a href="#docs" data-anchor="d-cli">Mapping to the repository</a><a href="#docs" data-anchor="d-openapi">OpenAPI draft</a><a href="#docs" data-anchor="d-status">Integration status</a></nav>
     <div class="docs-main">
       <h2 id="d-quick">Quickstart</h2><p>1. Deploy this HTML file on your own origin (any static host). The claude.ai preview blocks network calls, so live mode needs your domain. 2. Run a morpholib API service that implements the endpoints below and allows CORS from that origin. 3. In the workspace open <b>Integration</b>, switch to Live, enter the base URL and an API token, and press Test connection. 4. Queue a run from Live runs or from any Open problems tile.</p>
@@ -487,8 +490,8 @@ data: {<span class="k">"seq"</span>:<span class="n">21</span>,<span class="k">"s
   </div>
 </section>
 
-<section class="page on" data-page="about"><div class="wrap" style="padding-top:44px"><div class="page-heading"><div><h2>About the project</h2><p>Why Delphi exists, what it has found, and what it has not yet worked out.</p></div><div class="page-actions"><div class="lens"><div class="lens-group" role="group" aria-label="Explanation style"><button class="lens-btn" data-lens="bio" aria-pressed="true">Biology</button><button class="lens-btn" data-lens="math" aria-pressed="false">Mathematics</button></div></div><a class="button" href="https://github.com/kavitakoolkarni-bio/morpholib-delphi-branch" target="_blank" rel="noopener noreferrer">Delphi on GitHub <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrowup"/></svg></a><a class="button" href="https://github.com/fractastical/morpholib" target="_blank" rel="noopener noreferrer">morpholib on GitHub <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrowup"/></svg></a></div></div>
-<div class="home-metrics"><span><b>116</b> verified models</span><span><b>25</b> laws checked in Lean 4</span><span><b>201</b> signed records</span><span><b>~50 Myr</b> prediction horizon</span><span><b>1917–2026</b> span of models</span></div>
+<section class="page on" data-page="about"><div class="wrap" style="padding-top:44px"><div class="page-heading"><div><h2>About the project</h2><p>Why Delphi exists, what it has found, and what it has not yet worked out.</p></div><div class="page-actions"><div class="lens"><div class="lens-group" role="group" aria-label="Explanation style"><button class="lens-btn" data-lens="bio" aria-pressed="true">Biology</button><button class="lens-btn" data-lens="math" aria-pressed="false">Mathematics</button></div></div><a class="button" href="platform.html">Design studio</a><a class="button" href="https://github.com/kavitakoolkarni-bio/morpholib-delphi-branch" target="_blank" rel="noopener noreferrer">Delphi on GitHub <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrowup"/></svg></a><a class="button" href="https://github.com/fractastical/morpholib" target="_blank" rel="noopener noreferrer">morpholib on GitHub <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrowup"/></svg></a></div></div>
+<div class="home-metrics" id="about-metrics"><span><b>116</b> verified models</span><span><b>25</b> laws checked in Lean 4</span><span><b>201</b> signed records</span><span><b>~50 Myr</b> prediction horizon</span><span><b>1917–2026</b> span of models</span></div>
 
 <div class="explorer about-explorer"><div class="explorer-copy"><div class="eyebrow">THE PROJECT</div><h2>Life uses only a few forms.<br><em>The space of possible forms is vast.</em></h2><p class="for-bio">Delphi is an open project to collect, rebuild and test the mathematics of biological form. Every model that passes its checks is turned into a prediction anyone can try to prove wrong. The cube shows one classic example: every shell shape that could exist sits at its corners, and the small pink cloud is where real shells actually live.</p><p class="for-math">Delphi is a workbench over audited reproductions of form-generating models, each scored against SHA-256-locked data and formalised in Lean 4 before it is allowed to predict. The cube is Raup’s (W, D, T) parameter space: corner shells sample its extremes; the point cloud is the occupied region of measured molluscs.</p><div class="about-cta"><button class="button" data-go="methods">Read the method <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button><button class="button subtle" data-go="models">Open the registry</button></div><div class="explorer-source"><span>02 / MORPHOSPACE</span> Raup · 1966 · Delphi · 2026</div></div><div class="explorer-stage"><canvas id="about-space" tabindex="0" role="img" aria-label="Interactive 3D morphospace cube with shells at its corners and a point cloud of real shells. Drag or use arrow keys to orbit, scroll or press plus and minus to zoom."></canvas><div class="stage-label"><i class="status-dot"></i> LIVE 3D MORPHOSPACE</div><div class="stage-controls"><button class="icon-button" id="about-play" aria-label="Pause rotation"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-pause"/></svg></button><button class="icon-button" id="about-reset" aria-label="Reset camera"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-reset"/></svg></button></div><div class="stage-bottom"><div><div class="stage-hint">Drag to orbit · Scroll to zoom</div><div class="space-legend"><span><i class="l-model"></i> possible shells, one per corner</span><span><i class="l-spec"></i> where measured shells live</span></div></div><div class="stage-parameters"><span>EXPANSION W<b>1.3 – 4.0</b></span><span>DISTANCE D<b>0 – 0.5</b></span><span>TRANSLATION T<b>0 – 2.2</b></span></div></div></div></div>
 
@@ -499,7 +502,7 @@ data: {<span class="k">"seq"</span>:<span class="n">21</span>,<span class="k">"s
   <article class="pillar"><span class="mini-glyph"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-predict"/></svg></span><h3>Predict</h3><p class="for-bio">A verified model earns the right to predict shapes nobody has measured, with error bars that were tested blind on 10,888 species before the data was opened.</p><p class="for-math">Pagel-λ conditioning on a dated tree in 7 Thompson modes or the full 30-D space; pre-registered, hashed predictions scored against FishShapes v1.</p><button class="text-button" data-go="predict">Predict a body plan <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button></article>
 </div>
 
-<div class="section-title problems-title"><div><h3>Open problems Delphi has worked</h3><small id="problem-count"></small></div><div class="filters problem-filters" id="problem-filters"><button class="chip" data-pf="all" aria-pressed="true">All</button><button class="chip" data-pf="resolved">Resolved</button><button class="chip" data-pf="proved">Proved</button><button class="chip" data-pf="partial">Partial</button><button class="chip" data-pf="open">Still open</button></div></div>
+<div class="section-title problems-title"><div><h3 id="about-problems-title">Open problems Delphi has worked</h3><small id="problem-count"></small></div><div class="filters problem-filters" id="problem-filters"><button class="chip" data-pf="all" aria-pressed="true">All</button><button class="chip" data-pf="resolved">Resolved</button><button class="chip" data-pf="proved">Proved</button><button class="chip" data-pf="partial">Partial</button><button class="chip" data-pf="open">Still open</button></div></div>
 <div class="problem-grid" id="problem-grid"></div>
 <p class="small problem-note">Resolved: a published paradox or confound explained with a quantified result. Proved: a theorem machine-checked in Lean 4 or verified exhaustively on a stated domain. Partial and open: the project’s own statement of what remains. Every tile links to the workspace view where you can see it.</p>
 
@@ -507,7 +510,7 @@ data: {<span class="k">"seq"</span>:<span class="n">21</span>,<span class="k">"s
   <div><div class="section-title"><h3>How a claim becomes a number</h3><button class="text-button" data-go="methods">Full 12-step loop <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button></div><div class="panel"><div class="panel-b"><div class="flow claim-flow"><div class="fx"><b>Paper</b>equations and reference tables extracted from the primary source</div><span class="arr">→</span><div class="fx"><b>Script</b>one program that grows the form and tests itself</div><span class="arr">→</span><div class="fx"><b>Specimens</b>output placed beside locked photographs and measurements</div><span class="arr">→</span><div class="fx"><b>Two referees</b>seven weighted dimensions, from different companies</div><span class="arr">→</span><div class="fx hi"><b>Signed record</b>a nanopublication that supersedes but never overwrites</div></div><p class="small" style="margin-top:14px">In the worked Turing run one remediation pass lifted the score from 38.0 to 85.5; across 100 autonomous loops the mean rose from 58.1 to 93.7. Scores are assessor ratings, not probabilities.</p></div></div></div>
   <div><div class="section-title"><h3>Provenance</h3></div><div class="panel"><div class="panel-b about-facts"><div><span class="mono">MAINTAINERS</span><b>Not disclosed</b><small>contributions are recorded in the repository history</small></div><div><span class="mono">REFEREES</span><b>Two independent language-model assessors</b><small>blinded, from different providers</small></div><div><span class="mono">LICENCE</span><b>See the repository</b><small>code and data licences are stated there</small></div><div><span class="mono">DATA</span><b>Claverie &amp; Wainwright 2014, Rabosky 2018, FishShapes v1, Planform, Limbform, WormGUIDES</b></div><div><span class="mono">VERIFICATION</span><b>Lean 4 · nanopub network</b><small>MathOfBiology.lean, w3id.org/np</small></div><div><span class="mono">CITE</span><b>CITATION.cff in the repository</b><small>Zenodo record in .zenodo.json</small></div></div></div></div>
 </div>
-<div class="workspace-note"><span>Simulations in this workspace are schematic reimplementations. Scores, fits and predictions are carried from the repository’s signed records as of 27 October 2026.</span><a href="https://github.com/fractastical/morpholib/blob/main/docs/KEY_DISCOVERIES.md" target="_blank" rel="noopener noreferrer">Key discoveries ↗</a></div>
+<div class="workspace-note"><span id="about-live-note">Simulations in this workspace are schematic reimplementations. Scores, fits and predictions are carried from the repository’s signed records as of 27 October 2026.</span><a href="https://github.com/fractastical/morpholib/blob/main/docs/KEY_DISCOVERIES.md" target="_blank" rel="noopener noreferrer">Key discoveries ↗</a></div>
 </div></section>
 <footer class="site-footer"><div class="foot-in"><div class="foot-brand"><a class="logo" href="#about" data-go="about" style="padding:0;gap:10px"><svg class="brand-symbol" viewBox="0 0 32 40" fill="none" aria-hidden="true" style="width:24px;height:30px;color:var(--accent)"><path d="M16 2L30 29 16 37 2 29 16 2Z" stroke="currentColor" stroke-width="1.2"/><path d="M16 2v35M2 29l14-8 14 8M5 23l11-6 11 6M9 16l7-4 7 4M2 29l14 2 14-2" stroke="currentColor" stroke-width=".8" opacity=".75"/></svg><span><b style="font-size:20px">Delphi</b></span></a><p>An open portal for the study of biological form: a century of mathematical models, rebuilt, checked against specimens and tested on shapes they have never seen. Built on the open-source morpholib library.</p></div><div><h4>Explore</h4><button data-go="workspace">Workbench</button><button data-go="predict">Predict a body plan</button><button data-go="simulate">Generate a form</button><button data-go="evaluate">Fit to specimens</button><button data-go="runs">Live runs</button></div><div><h4>Research</h4><button data-go="problems">Open problems</button><button data-go="evidence">Evidence</button><button data-go="models">Model registry</button><a href="https://github.com/fractastical/morpholib/blob/main/docs/KEY_DISCOVERIES.md" target="_blank" rel="noopener noreferrer">Key discoveries ↗</a></div><div><h4>Data &amp; code</h4><button data-go="docs">Code, data and API</button><button data-go="integration">Connect your own copy</button><a href="https://github.com/kavitakoolkarni-bio/morpholib-delphi-branch" target="_blank" rel="noopener noreferrer">Delphi on GitHub ↗</a><a href="https://github.com/fractastical/morpholib" target="_blank" rel="noopener noreferrer">morpholib on GitHub ↗</a></div><div><h4>Community</h4><button data-go="about">About the project</button><button data-go="access">Take part</button><a href="https://github.com/fractastical/morpholib/blob/main/CITATION.cff" target="_blank" rel="noopener noreferrer">How to cite ↗</a></div></div><div class="foot-legal"><span>© 2026 Project Delphi. Free and open. Drawings in the workbench are schematic; scores, fits and predictions come from signed records in the repository.</span><span>Model scores are reviewer ratings, not probabilities.</span></div></footer>
 </div>
@@ -601,6 +604,19 @@ data: {<span class="k">"seq"</span>:<span class="n">21</span>,<span class="k">"s
           <p class="small">Registered in <a href="https://github.com/fractastical/morpholib/blob/main/docs/THOMPSON_PHYLOGENETIC_PREDICTIONS.md">THOMPSON_PHYLOGENETIC_PREDICTIONS.md</a> and as signed nanopublications. Head and predorsal proportions for lineage trajectories are taken from the family value; the trajectory itself is interpolated between registered points at 0, 10, 25, 50, 75 and 100 Ma.</p>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="panel" style="margin-top:18px">
+    <div class="panel-h"><h2>Test a claim on its species</h2><span class="small" id="claim-built"></span></div>
+    <div class="panel-b">
+      <label class="field"><span>Claim</span><select id="claim-pick"><option value="">Loading claims…</option></select></label>
+      <p class="small" id="claim-statement"></p>
+      <div id="claim-species" style="display:flex;flex-wrap:wrap;gap:6px;margin:12px 0"></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+        <button class="button primary" type="button" id="claim-run">Test these species</button>
+        <label class="button">Test your data<input id="claim-file" type="file" style="display:none"></label>
+      </div>
+      <div id="claim-result" style="margin-top:14px"></div>
     </div>
   </div>
 </section>
@@ -2207,6 +2223,194 @@ function loadModelPredictions(){
     return response.json();
   }).then(applyModelCatalog).catch(function(){});
 }
+
+/* ---------- Claim tests on the Predict page ---------- */
+function claimVerdictClass(verdict){
+  if (verdict === 'supports') return 'ok';
+  if (verdict === 'refutes') return 'bad';
+  return 'warn';
+}
+function renderClaimSpecies(claim){
+  var species = claim.species || [];
+  var shown = species.filter(function(row){ return row.rank === 'species' || row.rank === 'subspecies'; });
+  var list = shown.length ? shown : species;
+  $('#claim-statement').textContent = claim.statement || '';
+  $('#claim-species').innerHTML = list.slice(0, 36).map(function(row){
+    return '<span class="chip">' + esc(row.name) + (row.datasets ? ' · ' + row.datasets + ' datasets' : '') + '</span>';
+  }).join('') || '<span class="small">No species record is linked to this claim.</span>';
+  if (list.length > 36) $('#claim-species').insertAdjacentHTML('beforeend', '<span class="small">' + (list.length - 36) + ' more</span>');
+}
+function renderClaimResult(payload){
+  renderClaimSpecies(payload);
+  var live = payload.live_result;
+  if (!live) { $('#claim-result').innerHTML = ''; return; }
+  $('#claim-result').innerHTML = '<p class="' + claimVerdictClass(live.verdict) + '"><b>' + esc(live.verdict) + '</b>' +
+    (live.value != null ? ' · ' + live.value + ' from ' + live.n + ' rows' : '') + '</p>' +
+    '<p class="small">' + esc(live.reason || ((live.rule ? 'Rule: ' + live.rule + '. ' : '') + 'Read from ' + (live.source || 'the species table') + '.')) +
+    (live.registered_verdict ? ' Registered run: ' + esc(live.registered_verdict) + ' at ' + live.registered_value + '.' : '') + '</p>';
+}
+function loadClaim(id){
+  if (!id) return;
+  getJson('/v1/predict/claims/' + encodeURIComponent(id)).then(renderClaimSpecies).catch(function(error){
+    $('#claim-result').innerHTML = '<p class="small">' + esc(error.message) + '</p>';
+  });
+}
+var getJson = function(url){ return fetch(url, {headers:{'Accept':'application/json'}}).then(function(response){ if(!response.ok) throw new Error('HTTP ' + response.status); return response.json(); }); };
+fetch('/v1/predict/claims', {headers:{'Accept':'application/json'}}).then(function(response){ return response.json(); }).then(function(payload){
+  var built = $('#claim-built');
+  if (built) built.textContent = payload.built ? 'Claims built ' + payload.built : '';
+  var select = $('#claim-pick');
+  if (!select) return;
+  var groups = {};
+  (payload.claims || []).forEach(function(claim){
+    var key = claim.thinker || 'Other';
+    (groups[key] = groups[key] || []).push(claim);
+  });
+  select.innerHTML = Object.keys(groups).map(function(thinker){
+    return '<optgroup label="' + esc(thinker) + '">' + groups[thinker].map(function(claim){
+      return '<option value="' + esc(claim.id) + '">' + esc(claim.label) + (claim.species ? ' · ' + claim.species + ' species' : '') + '</option>';
+    }).join('') + '</optgroup>';
+  }).join('');
+  if (select.value) loadClaim(select.value);
+}).catch(function(){});
+var claimPick = $('#claim-pick');
+if (claimPick) claimPick.addEventListener('change', function(){ loadClaim(claimPick.value); $('#claim-result').innerHTML = ''; });
+var claimRun = $('#claim-run');
+if (claimRun) claimRun.addEventListener('click', function(){
+  var id = $('#claim-pick').value;
+  if (!id) return;
+  claimRun.disabled = true;
+  fetch('/v1/predict/claims/' + encodeURIComponent(id) + '/run', {method:'POST', headers:{'Accept':'application/json'}}).then(function(response){
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    return response.json();
+  }).then(renderClaimResult).catch(function(error){
+    $('#claim-result').innerHTML = '<p class="small">' + esc(error.message) + '</p>';
+  }).then(function(){ claimRun.disabled = false; });
+});
+var claimFile = $('#claim-file');
+if (claimFile) claimFile.addEventListener('change', function(){
+  var id = $('#claim-pick').value, file = claimFile.files[0];
+  if (!id || !file) return;
+  var body = new FormData();
+  body.append('file', file);
+  fetch('/v1/predict/claims/' + encodeURIComponent(id) + '/upload', {method:'POST', body: body}).then(function(response){
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    return response.json();
+  }).then(renderClaimResult).catch(function(error){
+    $('#claim-result').innerHTML = '<p class="small">' + esc(error.message) + '</p>';
+  });
+});
+
+/* ---------- Live feed for About, Explore, Open problems, Evidence, Data & code ---------- */
+var exploreSource='All', exploreQuery='', exploreShown=24, exploreClaim=null;
+function paintAbout(feed){
+  var box=$('#about-metrics'); if(!box||!feed.about) return;
+  box.innerHTML=(feed.about.metrics||[]).map(function(row){return '<span><b>'+esc(row.value)+'</b> '+esc(row.label)+'</span>';}).join('');
+  var note=$('#about-live-note'); if(note) note.textContent=feed.about.note||note.textContent;
+}
+function paintExplore(feed){
+  var host=$('#explore-live'); if(!host||!feed.explore) return;
+  var groups=feed.explore.groups||[], claims=feed.explore.claims||[];
+  var query=exploreQuery.trim().toLowerCase();
+  var rows=claims.filter(function(row){
+    if(exploreSource!=='All' && row.source!==exploreSource) return false;
+    if(!query) return true;
+    return (row.title+' '+row.id+' '+row.thinker+' '+(row.chapter||'')+' '+(row.statement||'')).toLowerCase().indexOf(query)>=0;
+  });
+  var chips=['All'].concat(groups.map(function(group){return group.source;}));
+  var html='<div class="sec" style="padding-top:8px"><div class="sec-head"><div><div class="eyebrow">LIVE CATALOG</div><h2>'+esc(String(claims.length))+' claims from the Delphi snapshot.</h2><p>Search stays in this browser. A Lean mark means a program is compiled in the snapshot or linked from the Frontier review. A verdict is a vendored claim-test, not a new measurement.</p></div></div>';
+  html+='<div class="filters" id="explore-sources">'+chips.map(function(name){var count=name==='All'?claims.length:(groups.filter(function(group){return group.source===name;})[0]||{}).count;return '<button class="chip" data-source="'+esc(name)+'" aria-pressed="'+(exploreSource===name)+'">'+esc(name)+(count?' · '+count:'')+'</button>';}).join('')+'</div>';
+  html+='<label class="field" style="margin:14px 0"><span>Search the catalog</span><input id="explore-query" value="'+esc(exploreQuery)+'" placeholder="Thinker, claim id, or a phrase from the statement"></label>';
+  html+='<div class="tbl"><table><thead><tr><th>Claim</th><th>Source</th><th>Test</th><th>Lean</th></tr></thead><tbody>';
+  rows.slice(0,exploreShown).forEach(function(row){
+    html+='<tr data-claim="'+esc(row.id)+'" style="cursor:pointer"><td><b>'+esc(row.title)+'</b><br><span class="small mono">'+esc(row.id)+'</span></td><td>'+esc(row.source||'')+' · '+esc(row.year||'')+'</td><td>'+esc(row.verdict||row.status||'untested')+'</td><td>'+(row.lean?'program':'—')+'</td></tr>';
+  });
+  html+='</tbody></table></div>';
+  if(rows.length>exploreShown) html+='<p style="margin-top:12px"><button class="button" id="explore-more">Show more ('+rows.length+' match)</button></p>';
+  else html+='<p class="small" style="margin-top:12px">'+rows.length+' shown.</p>';
+  if(exploreClaim){
+    var picked=claims.filter(function(row){return row.id===exploreClaim;})[0];
+    if(picked) html+='<div class="panel" style="margin-top:14px"><div class="panel-h"><h3>'+esc(picked.title)+'</h3><span class="small mono">'+esc(picked.id)+'</span></div><div class="panel-b"><p>'+esc(picked.statement||'')+'</p><p class="small">'+esc(picked.thinker||'')+(picked.chapter?' · '+esc(picked.chapter):'')+(picked.nanopub?' · <a href="'+esc(picked.nanopub)+'" target="_blank" rel="noopener noreferrer">nanopub</a>':'')+(picked.lean?' · Lean program attached':' · no Lean program')+'</p></div></div>';
+  }
+  html+='</div>';
+  var typing=document.activeElement&&document.activeElement.id==='explore-query';
+  var caret=typing?document.activeElement.selectionStart:null;
+  host.innerHTML=html;
+  $$('#explore-sources .chip').forEach(function(chip){chip.addEventListener('click',function(){exploreSource=chip.dataset.source;exploreShown=24;paintExplore(feed);});});
+  var input=$('#explore-query');
+  if(input){input.addEventListener('input',function(){exploreQuery=input.value;exploreShown=24;paintExplore(feed);}); if(typing){input.focus(); if(caret!=null) input.setSelectionRange(caret,caret);}}
+  var more=$('#explore-more'); if(more) more.addEventListener('click',function(){exploreShown+=24;paintExplore(feed);});
+  $$('#explore-live tr[data-claim]').forEach(function(row){row.addEventListener('click',function(){exploreClaim=exploreClaim===row.dataset.claim?null:row.dataset.claim;paintExplore(feed);});});
+}
+function adoptProblems(feed){
+  var list=feed.problems||[]; if(!list.length) return;
+  PROBLEMS.length=0; list.forEach(function(row){PROBLEMS.push(row);});
+  var title=$('#problems-title'); if(title) title.textContent=list.length+' questions from the Frontier register.';
+  var aboutTitle=$('#about-problems-title'); if(aboutTitle) aboutTitle.textContent='Open problems from the Frontier register';
+  var lead=$('#problems-lead'); if(lead&&feed.problemsScope) lead.textContent=feed.problemsScope+' Each card states what is already known, the next action, and the acceptance check. Resolved means the register records a correction. Open means that check has not been met.';
+  var land=$('#land-all-problems'); if(land) land.innerHTML='All '+list.length+' problems <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg>';
+  var band=$('#band-problems'); if(band) band.textContent=String(list.length);
+  var bandNote=$('#band-problems-note'); if(bandNote){var openN=list.filter(function(row){return row.status==='open';}).length; bandNote.textContent=openN+' still open, '+(list.length-openN)+' recorded as corrected';}
+  renderProblems(); renderSiteProblems();
+  var grid=$('#land-problems'); if(grid){grid.innerHTML=''; PROBLEMS.slice(0,4).forEach(function(row,index){grid.appendChild(problemTile(row,index,true));}); requestAnimationFrame(drawGlyphs);}
+}
+function paintEvidence(feed){
+  var host=$('#evidence-live'), block=feed.evidence; if(!host||!block) return;
+  var verdicts=block.verdicts||{}, names=Object.keys(verdicts);
+  var html='<div class="pillar-grid" style="margin-top:18px">';
+  html+='<article class="pillar"><h3>'+esc(String(block.tested||0))+' claim-tests</h3><p>'+names.map(function(name){return esc(name)+' '+verdicts[name];}).join(' · ')+'</p></article>';
+  html+='<article class="pillar"><h3>'+esc(String(block.lean||0))+' Lean programs</h3><p>Compiled in the Delphi snapshot or linked from the Frontier review.</p></article>';
+  html+='<article class="pillar"><h3>'+esc(String(block.nanopubs||0))+' nanopub URIs</h3><p>'+esc(String(block.localTrig||0))+' local TriG files sit beside the catalog. A URI is the published statement, not a new measurement.</p></article>';
+  html+='</div>';
+  var review=block.frontierReview||{}, reviewNames=Object.keys(review);
+  if(reviewNames.length) html+='<p class="small" style="margin-top:12px">Frontier review map: '+reviewNames.map(function(name){return esc(name)+' '+review[name];}).join(' · ')+'.</p>';
+  if((block.rows||[]).length){
+    html+='<div class="panel" style="margin-top:18px"><div class="panel-h"><h3>Claim-tests from the snapshot</h3></div><div class="panel-b"><div class="tbl"><table><thead><tr><th>Claim</th><th>Verdict</th><th>Registered measurement</th></tr></thead><tbody>';
+    block.rows.forEach(function(row){html+='<tr><td><b>'+esc(row.title)+'</b><br><span class="small mono">'+esc(row.id)+'</span></td><td>'+esc(row.verdict)+'</td><td>'+esc(row.measured||'—')+(row.nanopub?'<br><a class="small" href="'+esc(row.nanopub)+'" target="_blank" rel="noopener noreferrer">nanopub</a>':'')+'</td></tr>';});
+    html+='</tbody></table></div></div></div>';
+  }
+  var scored=block.assessment;
+  if(scored){
+    html+='<div class="panel" style="margin-top:18px"><div class="panel-h"><h3>Self-assessment · '+esc(scored.rubric||'')+'</h3><span class="small">snapshot '+esc(scored.commit||'')+'</span></div><div class="panel-b"><p class="small">'+esc(scored.note||'')+' Weighted totals run from '+esc(scored.low)+' to '+esc(scored.high)+'; the mean is '+esc(scored.mean)+'.</p><div class="tbl"><table><thead><tr><th>Assessor</th><th>Weighted total</th><th>Bonus</th><th>First improvement they named</th></tr></thead><tbody>';
+    (scored.assessors||[]).forEach(function(row){html+='<tr><td>'+esc(row.name)+'</td><td>'+esc(row.total)+'</td><td>'+esc(row.bonus)+'</td><td>'+esc(row.improvement||'')+'</td></tr>';});
+    html+='</tbody></table></div></div></div>';
+  }
+  host.innerHTML=html;
+}
+function paintCode(feed){
+  var host=$('#docs-sources'), block=feed.code; if(!host||!block) return;
+  var html='<div class="pillar-grid">';
+  (block.repos||[]).forEach(function(repo){
+    html+='<article class="pillar"><h3><a href="'+esc(repo.url)+'" target="_blank" rel="noopener noreferrer">'+esc(repo.repo)+'</a></h3><p>'+esc(repo.role)+'</p><p class="small">Feeds '+esc(repo.feeds)+'. '+(repo.present?'Present':'Missing')+(repo.sha?' · '+esc(repo.sha.slice(0,12)):'')+(repo.date?' · '+esc(repo.date):'')+(repo.link?' · claims link evidence with '+esc(repo.link):'')+'.</p></article>';
+  });
+  html+='</div>';
+  if((block.tools||[]).length) html+='<p class="small" style="margin-top:12px">Frontier MCP tools in the local tree: '+block.tools.map(esc).join(', ')+'. They read a PostgreSQL store that is not running here. This portal serves the seed register and the Delphi snapshot.</p>';
+  if((block.receipts||[]).length){
+    html+='<div class="panel" style="margin-top:14px"><div class="panel-h"><h3>Frontier check receipts</h3></div><div class="panel-b"><div class="tbl"><table><thead><tr><th>Receipt</th><th>Checks</th><th>What it retained</th></tr></thead><tbody>';
+    block.receipts.forEach(function(row){html+='<tr><td class="mono">'+esc(row.name)+'</td><td>'+esc(row.checks)+'</td><td>'+esc(row.retained||'—')+'</td></tr>';});
+    html+='</tbody></table></div></div></div>';
+  }
+  html+='<div class="tbl" style="margin-top:14px"><table><thead><tr><th>Method</th><th>Path</th><th>What this server returns</th></tr></thead><tbody>';
+  (block.endpoints||[]).forEach(function(row){html+='<tr><td><span class="method '+(row.method==='POST'?'post':'get')+'">'+esc(row.method)+'</span></td><td class="mono">'+esc(row.path)+'</td><td>'+esc(row.purpose)+'</td></tr>';});
+  html+='</tbody></table></div>';
+  host.innerHTML=html;
+}
+function loadSiteFeed(){
+  function apply(feed){
+    window.DelphiSite=feed;
+    paintAbout(feed); paintExplore(feed); adoptProblems(feed); paintEvidence(feed); paintCode(feed);
+  }
+  fetch('/v1/portal/site',{headers:{'Accept':'application/json'}}).then(function(response){
+    if(!response.ok) throw new Error('HTTP '+response.status);
+    return response.json();
+  }).then(apply).catch(function(){
+    fetch('data/portal-site.json',{headers:{'Accept':'application/json'}}).then(function(response){
+      if(!response.ok) throw new Error('HTTP '+response.status);
+      return response.json();
+    }).then(apply).catch(function(){});
+  });
+}
+loadSiteFeed();
 
 /* ---------- Initial route ---------- */
 syncModeUI();
