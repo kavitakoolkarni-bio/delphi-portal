@@ -158,6 +158,191 @@
 })(typeof window!=='undefined'?window:globalThis);
 
 </script>
+<style id="evidence-workspace-styles">
+/* Evidence workspace: scoped to preserve the explorer and design studio. */
+.ev-page { --ev-radius:14px; }
+.ev-page button,.ev-page input,.ev-page select { font-size:13px; }
+.ev-page button:focus-visible,.ev-page a:focus-visible,.ev-page summary:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+.ev-page .button { min-height:40px; padding:10px 14px; font-size:12px; border-radius:7px; }
+.ev-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:25px; }
+.ev-heading h1 { font-size:clamp(34px,3.1vw,49px); letter-spacing:-1.7px; line-height:1.12; margin:10px 0 12px; }
+.ev-heading p { font-size:14px; line-height:1.65; color:var(--muted); max-width:670px; }
+.ev-heading .button { flex-shrink:0; }
+.ev-collection { border:1px solid var(--grid); border-radius:var(--ev-radius); background:var(--white); margin-bottom:24px; overflow:hidden; }
+.ev-collection-label { display:flex; justify-content:space-between; gap:15px; align-items:center; padding:12px 20px; border-bottom:1px solid var(--grid); font-size:11px; color:var(--muted); }
+.ev-collection-label strong { font-size:11px; font-weight:600; }
+.ev-metrics { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); }
+.ev-metric { padding:17px 20px; border-right:1px solid var(--grid); display:grid; grid-template-columns:auto 1fr; align-items:center; gap:14px; }
+.ev-metric:last-child { border-right:0; }
+.ev-metric>strong { font-size:28px; font-weight:500; line-height:1; letter-spacing:-1px; color:var(--blue); font-variant-numeric:tabular-nums; }
+.ev-metric:nth-child(2)>strong { color:var(--pink); }
+.ev-metric:nth-child(3)>strong { color:var(--green); }
+.ev-metric:nth-child(4)>strong { color:var(--ink); }
+.ev-metric b { display:block; font-size:12px; font-weight:600; line-height:1.5; }
+.ev-metric small { display:block; font-size:10px; line-height:1.5; color:var(--muted); margin-top:2px; overflow-wrap:anywhere; }
+.ev-collection-details { border-top:1px solid var(--grid); }
+.ev-collection-details>summary { cursor:pointer; padding:11px 20px; font-size:11px; color:var(--muted); }
+.ev-collection-details[open]>summary { border-bottom:1px solid var(--grid); }
+.ev-readiness { padding:19px 22px; display:grid; grid-template-columns:minmax(200px,1fr) minmax(230px,1fr); gap:32px; align-items:center; background:linear-gradient(120deg,var(--paper),var(--white)); }
+.ev-readiness h3 { font-size:13px; margin-bottom:7px; }
+.ev-readiness p { color:var(--muted); font-size:12px; line-height:1.6; max-width:600px; }
+.ev-range-head { display:flex; align-items:center; justify-content:space-between; gap:15px; }
+.ev-range-head strong { font:26px Georgia,serif; color:var(--pink); }
+.ev-range-head span { font-size:11px; color:var(--muted); }
+.ev-readiness .score-scale { margin:13px 0 9px; background:var(--grid); height:9px; }
+.ev-readiness .score-labels { font-size:10px; }
+.ev-workspace { display:grid; grid-template-columns:292px minmax(0,1fr); gap:22px; align-items:start; }
+.ev-library { background:var(--white); border:1px solid var(--grid); border-radius:var(--ev-radius); position:sticky; top:96px; min-width:0; overflow:hidden; }
+.ev-library-top { padding:20px 18px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.ev-library-top h2 { font:600 15px Inter,"Segoe UI",sans-serif; }
+.ev-count-badge { color:var(--blue); background:var(--blue-soft); border-radius:7px; padding:5px 8px; font-size:11px; font-variant-numeric:tabular-nums; }
+.ev-browser-toggle { display:none; }
+.ev-search { display:flex; align-items:center; gap:9px; margin:0 16px 14px; padding:11px 12px; background:var(--paper); border:1px solid var(--grid); border-radius:8px; }
+.ev-search:focus-within { border-color:var(--blue); box-shadow:0 0 0 3px var(--blue-soft); }
+.ev-search svg { width:17px; height:17px; color:var(--muted); flex-shrink:0; }
+.ev-search input { width:100%; min-width:0; outline:none; background:transparent; border:0; color:var(--ink); font-size:13px; }
+.ev-search kbd { background:#fff; border:1px solid var(--grid); border-radius:4px; padding:1px 5px; color:var(--subtle); font:11px Consolas,monospace; }
+.ev-filters { display:grid; grid-template-columns:1fr; gap:10px; padding:0 16px 16px; }
+.ev-filters label { display:grid; grid-template-columns:69px minmax(0,1fr); align-items:center; gap:8px; color:var(--muted); font-size:11px; }
+.ev-filters select { width:100%; min-width:0; border:1px solid var(--grid); border-radius:6px; background:var(--white); color:var(--ink); padding:8px; font-size:11px; }
+.ev-list-caption { min-height:43px; display:flex; align-items:center; justify-content:space-between; gap:8px; padding:10px 18px; background:var(--paper); border-top:1px solid var(--grid); border-bottom:1px solid var(--grid); font-size:10px; color:var(--muted); }
+.ev-text-button { padding:0; color:var(--blue); font-size:11px!important; text-decoration:underline; text-underline-offset:3px; }
+.ev-claim-list { max-height:min(580px,calc(100dvh - 420px)); min-height:210px; overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:var(--rule) transparent; padding:7px; }
+.ev-claim { display:block; width:100%; text-align:left; padding:14px 13px; border:1px solid transparent; border-radius:8px; margin-bottom:3px; position:relative; }
+.ev-claim:hover { background:var(--paper); }
+.ev-claim.is-selected { background:var(--blue-soft); border-color:rgba(36,87,214,.23); }
+.ev-claim.is-selected:before { content:""; position:absolute; left:-1px; top:14px; bottom:14px; width:3px; border-radius:0 3px 3px 0; background:var(--blue); }
+.ev-claim-source { font-size:10px; color:var(--muted); display:flex; align-items:center; justify-content:space-between; gap:9px; }
+.ev-claim-source svg { width:13px; height:13px; color:var(--blue); opacity:0; }
+.ev-claim.is-selected .ev-claim-source svg { opacity:1; }
+.ev-claim strong { display:block; font-size:13px; line-height:1.5; font-weight:600; margin:7px 0 8px; overflow-wrap:anywhere; }
+.ev-claim.is-selected strong { color:var(--blue); }
+.ev-claim-status { display:block; color:var(--muted); font-size:10px; line-height:1.5; }
+.ev-claim-status:before { content:""; display:inline-block; width:5px; height:5px; border:1px solid var(--subtle); border-radius:50%; margin-right:6px; vertical-align:1px; }
+.ev-library-foot { padding:13px 18px; border-top:1px solid var(--grid); font-size:10px; color:var(--muted); line-height:1.6; }
+.ev-load-more { margin:5px 6px 8px; width:calc(100% - 12px); }
+.ev-empty { padding:26px 17px; color:var(--muted); line-height:1.7; font-size:13px; }
+.ev-empty strong { display:block; color:var(--ink); font-size:14px; margin-bottom:6px; }
+.ev-empty button { margin-top:13px; }
+.ev-reader { border:1px solid var(--grid); border-radius:var(--ev-radius); background:var(--white); min-width:0; box-shadow:0 8px 30px rgba(20,32,51,.025); overflow:hidden; }
+.ev-reader-top { padding:14px 28px; border-bottom:1px solid var(--grid); display:flex; align-items:center; justify-content:space-between; gap:16px; background:linear-gradient(105deg,var(--paper),var(--white)); }
+.ev-breadcrumb { color:var(--muted); font-size:11px; display:flex; align-items:center; flex-wrap:wrap; gap:7px; line-height:1.5; }
+.ev-breadcrumb i { width:4px; height:4px; border-radius:50%; background:var(--rule); }
+.ev-reader-tools { display:flex; align-items:center; gap:13px; flex-shrink:0; }
+.ev-focus-button { display:inline-flex; align-items:center; gap:6px; font-size:11px!important; padding:4px 0; color:var(--muted); }
+.ev-focus-button svg { width:14px; height:14px; }
+.ev-stepper { display:flex; gap:4px; align-items:center; }
+.ev-stepper button { width:31px; height:31px; display:grid; place-items:center; border:1px solid var(--grid); border-radius:6px; background:var(--white); }
+.ev-stepper button:hover:not(:disabled) { color:var(--blue); border-color:var(--blue); }
+.ev-stepper button svg { width:14px; height:14px; }
+.ev-stepper .previous svg { transform:rotate(180deg); }
+.ev-stepper>span { font-size:10px; font-variant-numeric:tabular-nums; color:var(--muted); margin-right:5px; white-space:nowrap; }
+.ev-record-header { padding:27px 30px 23px; }
+.ev-record-kicker { display:flex; align-items:center; gap:9px; flex-wrap:wrap; color:var(--muted); font-size:10px; letter-spacing:.09em; text-transform:uppercase; line-height:1.6; }
+.ev-record-kicker .ev-mode { display:inline-flex; align-items:center; gap:6px; color:var(--blue); }
+.ev-record-kicker .ev-mode:before { content:""; width:5px; height:5px; border-radius:50%; background:var(--blue); }
+.ev-record-kicker .ev-record-id { letter-spacing:0; text-transform:none; overflow-wrap:anywhere; font-family:Consolas,monospace; color:var(--muted); }
+.ev-record-header h2 { font-size:clamp(27px,2.5vw,37px); line-height:1.2; letter-spacing:-.7px; margin:12px 0 9px; overflow-wrap:anywhere; max-width:850px; }
+.ev-record-meta { color:var(--muted); font-size:12px; line-height:1.6; }
+.ev-state-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; margin:0 30px 22px; border:1px solid var(--grid); border-radius:9px; overflow:hidden; }
+.ev-state { padding:14px 16px; border-right:1px solid var(--grid); text-align:left; }
+.ev-state:last-child { border-right:0; }
+.ev-state:hover { background:var(--paper); }
+.ev-state-label { display:flex; align-items:center; gap:6px; color:var(--muted); font-size:10px; margin-bottom:7px; }
+.ev-state-label svg { width:14px; height:14px; color:var(--blue); }
+.ev-state:nth-child(2) .ev-state-label svg { color:var(--pink); }
+.ev-state strong { display:block; font-size:12px; font-weight:600; line-height:1.5; overflow-wrap:anywhere; }
+.ev-record-actions { padding:0 30px 22px; display:flex; justify-content:space-between; align-items:center; gap:15px; }
+.ev-record-actions .ev-action-buttons { display:flex; gap:8px; flex-wrap:wrap; }
+.ev-data-note { font-size:11px; color:var(--muted); line-height:1.6; max-width:220px; text-align:right; }
+.ev-check-result { margin:0 30px 20px; padding:13px 16px; border:1px solid var(--grid); border-left:3px solid var(--blue); border-radius:7px; font-size:12px; color:var(--ink); line-height:1.7; background:var(--paper); }
+.ev-check-result strong { display:block; margin-bottom:4px; }
+.ev-record-tabs { display:flex; gap:25px; padding:0 30px; overflow-x:auto; scrollbar-width:thin; border-top:1px solid var(--grid); border-bottom:1px solid var(--grid); background:var(--white); }
+.ev-record-tabs button { min-height:55px; padding:17px 0 14px; font-size:12px; color:var(--muted); border-bottom:3px solid transparent; white-space:nowrap; display:flex; align-items:center; gap:7px; }
+.ev-record-tabs button svg { width:15px; height:15px; }
+.ev-record-tabs button:hover { color:var(--blue); }
+.ev-record-tabs button.active { color:var(--blue); border-bottom-color:var(--blue); font-weight:600; }
+.ev-record-content { padding:28px 30px 32px; min-height:390px; }
+.ev-section-intro { margin-bottom:22px; display:flex; align-items:flex-start; justify-content:space-between; gap:15px; }
+.ev-section-intro h3 { font-size:17px; font-weight:600; letter-spacing:-.3px; margin-bottom:8px; }
+.ev-section-intro p { color:var(--muted); font-size:13px; line-height:1.7; max-width:680px; }
+.ev-section-number { flex-shrink:0; color:var(--subtle); font:11px Consolas,monospace; padding-top:4px; }
+.ev-prose { max-width:850px; font-size:15px; line-height:1.9; color:var(--ink); overflow-wrap:anywhere; white-space:pre-wrap; }
+.ev-prose p { margin:0 0 16px; }
+.ev-equation { margin:22px 0 26px; padding:24px; border-radius:9px; background:linear-gradient(115deg,var(--blue-soft),rgba(36,87,214,.025)); border:1px solid rgba(36,87,214,.15); }
+.ev-equation small { font-size:10px; color:var(--muted); display:block; margin-bottom:12px; }
+.ev-equation p { font:30px Georgia,serif; color:var(--blue); line-height:1.6; text-align:center; overflow-wrap:anywhere; }
+.ev-equation.long p { font-size:18px; }
+.ev-section-cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:25px; }
+.ev-section-card { border:1px solid var(--grid); border-radius:10px; padding:19px; text-align:left; display:flex; flex-direction:column; align-items:flex-start; gap:11px; min-width:0; transition:background .15s,border-color .15s; }
+.ev-section-card:hover { background:var(--paper); border-color:var(--blue); }
+.ev-section-card .ev-card-label { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; color:var(--blue); font-size:12px; font-weight:600; }
+.ev-section-card:nth-child(2) .ev-card-label { color:var(--pink); }
+.ev-section-card p { color:var(--muted); font-size:12px; line-height:1.75; overflow-wrap:anywhere; }
+.ev-section-card small { margin-top:auto; padding-top:2px; font-size:10px; color:var(--muted); }
+.ev-fields { margin:0; display:grid; gap:0; border-top:1px solid var(--grid); }
+.ev-field { display:grid; grid-template-columns:155px minmax(0,1fr); gap:23px; padding:19px 0; border-bottom:1px solid var(--grid); }
+.ev-field dt { color:var(--muted); font-size:11px; font-weight:600; line-height:1.7; overflow-wrap:anywhere; }
+.ev-field dd { margin:0; font-size:14px; color:var(--ink); line-height:1.85; white-space:pre-wrap; overflow-wrap:anywhere; min-width:0; }
+.ev-field a,.ev-source-link { color:var(--blue); text-decoration:underline; text-underline-offset:3px; overflow-wrap:anywhere; }
+.ev-field pre { font:12px/1.8 Consolas,monospace; white-space:pre-wrap; overflow-wrap:anywhere; background:var(--paper); padding:15px; border-radius:6px; margin:0; }
+.ev-long-field summary { cursor:pointer; font-size:12px; color:var(--blue); white-space:normal; }
+.ev-long-field[open] summary { margin-bottom:12px; }
+.ev-callout { display:flex; gap:11px; align-items:flex-start; margin-top:23px; padding:15px 17px; background:var(--paper); border-radius:8px; color:var(--muted); font-size:12px; line-height:1.75; }
+.ev-callout>svg { width:17px; height:17px; flex-shrink:0; color:var(--blue); margin-top:2px; }
+.ev-callout p { margin:0; }
+.ev-callout strong { color:var(--ink); font-weight:600; }
+.ev-proof-status { display:flex; align-items:flex-start; gap:14px; padding:18px 20px; border:1px solid var(--grid); border-radius:9px; background:linear-gradient(100deg,var(--pink-soft),var(--white)); margin-bottom:24px; }
+.ev-proof-symbol { width:37px; height:37px; border:1px solid rgba(178,58,90,.25); border-radius:50%; color:var(--pink); display:grid; place-items:center; font:21px Georgia,serif; flex-shrink:0; }
+.ev-proof-status small { color:var(--muted); display:block; font-size:10px; margin:1px 0 6px; }
+.ev-proof-status strong { display:block; font-size:15px; line-height:1.5; }
+.ev-model-links { margin-top:27px; }
+.ev-model-links h4 { font-size:13px; margin:0 0 12px; }
+.ev-model-links>p { font-size:12px; color:var(--muted); line-height:1.7; }
+.ev-model-list { list-style:none; padding:0; margin:0; border:1px solid var(--grid); border-radius:8px; overflow:hidden; }
+.ev-model-list li { border-top:1px solid var(--grid); }
+.ev-model-list li:first-child { border-top:0; }
+.ev-model-list a,.ev-model-list .ev-model-name { padding:13px 16px; font-size:12px; display:flex; align-items:center; justify-content:space-between; gap:15px; overflow-wrap:anywhere; }
+.ev-model-list a:hover { color:var(--blue); background:var(--paper); }
+.ev-model-list svg { width:14px; height:14px; }
+.ev-source-id { margin-top:20px; padding:15px 17px; border:1px solid var(--grid); border-radius:8px; }
+.ev-source-id small { display:block; font-size:10px; color:var(--muted); margin-bottom:8px; }
+.ev-source-id a { font-size:12px; line-height:1.8; }
+.ev-trail { margin-top:31px; padding-top:25px; border-top:1px solid var(--grid); }
+.ev-trail-head { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:17px; }
+.ev-trail-head h3 { font-size:15px; }
+.ev-trail-head p { color:var(--muted); font-size:12px; line-height:1.7; margin-top:7px; }
+.ev-trail-head small { color:var(--muted); font-size:10px; overflow-wrap:anywhere; max-width:200px; text-align:right; }
+.ev-trail-layout { display:grid; grid-template-columns:210px minmax(0,1fr); gap:23px; align-items:start; }
+.ev-trail-list { margin:0; padding:0; list-style:none; position:relative; }
+.ev-trail-list:before { content:""; position:absolute; left:23px; top:22px; bottom:24px; width:1px; background:var(--grid); }
+.ev-trail-list li { position:relative; margin-bottom:6px; }
+.ev-trail-step { display:flex; gap:11px; width:100%; text-align:left; padding:11px 9px; border:1px solid transparent; border-radius:8px; }
+.ev-trail-step:hover { background:var(--paper); }
+.ev-trail-step.active { background:var(--blue-soft); border-color:rgba(36,87,214,.2); }
+.ev-trail-index { display:grid; place-items:center; width:27px; height:27px; flex-shrink:0; border-radius:50%; background:var(--white); border:1px solid var(--grid); font:10px Consolas,monospace; color:var(--muted); }
+.ev-trail-step.active .ev-trail-index { background:var(--blue); color:var(--white); border-color:var(--blue); }
+.ev-trail-step strong { font-size:12px; line-height:1.5; display:block; margin-top:4px; overflow-wrap:anywhere; }
+.ev-trail-step small { font-size:9px; line-height:1.5; color:var(--muted); display:block; }
+.ev-trail-detail { border:1px solid var(--grid); border-radius:9px; padding:20px; min-width:0; }
+.ev-trail-detail h4 { font-size:14px; line-height:1.6; margin:0 0 7px; overflow-wrap:anywhere; }
+.ev-trail-detail>p { font-size:12px; line-height:1.75; color:var(--muted); margin-bottom:18px; }
+.ev-trail-detail .ev-field { display:block; padding:14px 0; }
+.ev-trail-detail .ev-field dt { margin-bottom:7px; }
+.ev-trail-detail .ev-field dd { font-size:12px; }
+.ev-trail-detail .ev-text-button { margin-top:17px; }
+.ev-record-footer { display:flex; justify-content:space-between; gap:16px; padding:15px 30px; border-top:1px solid var(--grid); background:var(--paper); color:var(--muted); font-size:10px; line-height:1.6; }
+.ev-workspace.is-focused { grid-template-columns:minmax(0,1fr); max-width:1180px; margin:0 auto; }
+.ev-workspace.is-focused .ev-library { display:none; }
+.ev-workspace.is-focused .ev-record-content { padding:34px 48px 40px; }
+@media(min-width:1500px) { .ev-workspace { grid-template-columns:310px minmax(0,1fr); gap:26px; }.ev-record-header,.ev-record-content { padding-left:36px; padding-right:36px; }.ev-claim-list { max-height:min(650px,calc(100dvh - 420px)); } }
+@media(max-width:1150px) { .ev-workspace { grid-template-columns:255px minmax(0,1fr); gap:16px; }.ev-metric { grid-template-columns:1fr; gap:7px; }.ev-record-header,.ev-record-content { padding-left:23px; padding-right:23px; }.ev-record-tabs { gap:18px; padding:0 23px; }.ev-record-tabs button { font-size:11px; }.ev-record-tabs button svg { display:none; }.ev-state-grid { margin-left:23px; margin-right:23px; }.ev-state { padding:12px; }.ev-record-actions { padding-left:23px; padding-right:23px; }.ev-data-note { display:none; }.ev-field { grid-template-columns:120px minmax(0,1fr); gap:17px; }.ev-trail-layout { grid-template-columns:175px minmax(0,1fr); gap:15px; }.ev-reader-top { padding:13px 20px; }.ev-section-cards { gap:11px; }.ev-section-card { padding:16px; } }
+@media(max-width:900px) { .ev-workspace { grid-template-columns:235px minmax(0,1fr); gap:14px; }.ev-reader-top { flex-wrap:wrap; gap:10px; }.ev-reader-tools { justify-content:space-between; width:100%; }.ev-state-grid { grid-template-columns:1fr; }.ev-state { border-right:0; border-bottom:1px solid var(--grid); display:flex; align-items:center; justify-content:space-between; gap:15px; }.ev-state:last-child { border-bottom:0; }.ev-state-label { margin:0; flex-shrink:0; }.ev-state strong { text-align:right; }.ev-section-cards { grid-template-columns:1fr; }.ev-field { grid-template-columns:1fr; gap:7px; }.ev-record-header h2 { font-size:30px; }.ev-record-content { padding:25px 22px; }.ev-trail-layout { grid-template-columns:1fr; }.ev-trail-list { display:grid; grid-template-columns:1fr 1fr; gap:6px; }.ev-trail-list:before { display:none; }.ev-trail-list li { margin:0; }.ev-trail-step { height:100%; border-color:var(--grid); }.ev-proof-status { padding:16px; }.ev-heading .button { font-size:11px; }.ev-record-footer { flex-direction:column; gap:4px; } }
+@media(max-width:760px) { .ev-heading { align-items:flex-start; flex-direction:column; gap:15px; margin-bottom:21px; }.ev-heading h1 { font-size:38px; }.ev-heading p { font-size:13px; }.ev-heading .button { padding:7px 10px; min-height:35px; }.ev-metrics { grid-template-columns:1fr 1fr; }.ev-metric { grid-template-columns:auto 1fr; padding:16px; gap:12px; }.ev-metric:nth-child(2) { border-right:0; }.ev-metric:nth-child(-n+2) { border-bottom:1px solid var(--grid); }.ev-metric>strong { font-size:24px; }.ev-metric b { font-size:11px; }.ev-metric small { font-size:9px; }.ev-collection-label { padding:11px 16px; font-size:10px; }.ev-collection-label>span { max-width:150px; text-align:right; }.ev-readiness { grid-template-columns:1fr; gap:20px; }.ev-workspace { grid-template-columns:minmax(0,1fr); gap:16px; }.ev-library { position:static; }.ev-library-top { padding:16px 18px; }.ev-browser-toggle { display:flex; align-items:center; gap:7px; padding:4px 0; color:var(--blue); font-size:12px!important; }.ev-browser-toggle svg { width:15px; height:15px; transform:rotate(90deg); }.ev-library[data-open="true"] .ev-browser-toggle svg { transform:rotate(-90deg); }.ev-library[data-open="false"] .ev-browser-body { display:none; }.ev-count-badge { margin-left:auto; margin-right:5px; }.ev-filters { grid-template-columns:1fr 1fr; }.ev-filters label { display:block; }.ev-filters select { margin-top:7px; }.ev-claim-list { max-height:335px; min-height:0; }.ev-claim { padding:12px; }.ev-reader-top { flex-wrap:nowrap; gap:12px; }.ev-reader-tools { width:auto; }.ev-focus-button { display:none; }.ev-stepper>span { display:none; }.ev-record-header { padding:24px 21px 20px; }.ev-record-header h2 { font-size:31px; }.ev-state-grid { margin:0 21px 20px; grid-template-columns:repeat(3,minmax(0,1fr)); }.ev-state { display:block; border-bottom:0; border-right:1px solid var(--grid); padding:12px 10px; }.ev-state-label { font-size:9px; margin-bottom:7px; }.ev-state-label svg { display:none; }.ev-state strong { text-align:left; font-size:11px; }.ev-record-actions { padding:0 21px 21px; }.ev-record-actions .button { font-size:11px; }.ev-record-tabs { gap:22px; padding:0 21px; }.ev-record-tabs button { min-height:52px; font-size:12px; }.ev-record-content,.ev-workspace.is-focused .ev-record-content { padding:25px 21px; }.ev-prose { font-size:14px; }.ev-section-cards { grid-template-columns:1fr 1fr; }.ev-equation { padding:20px 15px; }.ev-equation p { font-size:27px; }.ev-check-result { margin:0 21px 21px; }.ev-workspace.is-focused .ev-library { display:block; }.ev-trail-detail { padding:17px; }.ev-trail-head { flex-wrap:wrap; }.ev-trail-head small { text-align:left; }.ev-record-footer { padding:14px 21px; } }
+@media(max-width:430px) { .ev-metric { grid-template-columns:1fr; gap:6px; }.ev-metric small { font-size:10px; }.ev-heading h1 { font-size:34px; }.ev-section-cards { grid-template-columns:1fr; }.ev-state-grid { grid-template-columns:1fr; }.ev-state { display:flex; border-right:0; border-bottom:1px solid var(--grid); padding:11px 13px; }.ev-state-label { margin:0; font-size:10px; }.ev-state strong { text-align:right; }.ev-record-header h2 { font-size:29px; }.ev-breadcrumb { font-size:10px; }.ev-trail-list { grid-template-columns:1fr; }.ev-record-kicker { font-size:9px; } }
+@media(prefers-reduced-motion:reduce) { .ev-page * { transition:none!important; scroll-behavior:auto!important; } }
+
+</style>
 </head>
 <body>
 <header class="topbar"><a href="#laws" class="brand" aria-label="Delphi home"><svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M18 3L33 30H3L18 3Z" stroke="#2457D6" stroke-width="1.4"/><path d="M18 3V30M3 30L25.5 16.5M33 30L10.5 16.5" stroke="#B23A5A" stroke-width="1"/><circle cx="18" cy="21" r="5.5" fill="#F2F5F8" stroke="#2457D6"/></svg><span class="wordmark">delphi</span><span class="edition">The study of<br>biological form</span></a>
@@ -552,16 +737,115 @@
   function selectClaim(id){selected=id;drawClaimList();drawDetail();ensureModel(id);}
   function drawDetail(){const c=claim();const math=(lawModels[c.id]&&lawModels[c.id].math)||c.math;$('#claim-detail').innerHTML='<div class="panel-title"><h3>Claim in focus</h3><small>'+c.year+'</small></div><div class="detail-body">'+tag(c.status,c.tone)+'<h2>'+esc(c.title)+'</h2><p class="summary">'+esc(c.summary)+'</p><div class="equation '+(math.length>28?'long':'')+'">'+esc(math)+'</div><div class="detail-line"><span>Source</span>'+esc(c.source)+' · '+esc(c.area)+'</div><div class="detail-line"><span>Formal status</span>'+esc(c.proof)+'</div>'+modelLines(c)+(c.nanopub?'<div class="detail-line"><span>Nanopub</span><a href="'+esc(c.nanopub)+'" target="_blank" rel="noopener noreferrer">'+esc(c.nanopub)+'</a></div>':'')+'</div><div class="detail-actions">'+button('Inspect evidence','inspect-evidence',true)+button('Explore design','explore-design')+'</div>';}
   const tabLabels={statement:'Statement',source:'Source',assumptions:'Assumptions',evidence:'Evidence',formal:'Formal status'};
-  async function renderEvidence(){const c=claim();$('#view').innerHTML=heading('02 / Structure the evidence','A claim, with its <em>conditions attached.</em>','Keep the mathematical statement, formal status and biological evidence independently inspectable.',button('Ontology guide','ontology',false,'external'))+evidenceStats()+ 
-    '<div class="workspace-grid"><section class="panel"><div class="record-header"><div><div class="eyebrow">Selected claim record</div><h2>'+esc(c.title)+'</h2></div><select id="record-select" class="select" aria-label="Select claim to inspect">'+claimOptions()+'</select></div><div class="record-tabs" role="tablist" aria-label="Record sections">'+Object.entries(tabLabels).map(([id,label])=>'<button role="tab" id="tab-'+id+'" aria-controls="record-content" tabindex="'+(id===recordTab?'0':'-1')+'" aria-selected="'+(id===recordTab)+'" class="'+(id===recordTab?'active':'')+'" data-record-tab="'+id+'">'+label+'</button>').join('')+'</div><div class="record-content" id="record-content" role="tabpanel" aria-labelledby="tab-'+recordTab+'"></div><div class="provenance"><div class="eyebrow">Record structure / open a node for its nanopub detail</div>'+provenanceSvg()+'</div></section><aside class="evidence-side"><section class="panel checklist"><h3>A record you can inspect</h3><div class="check-row"><span class="check-icon">✓</span><div><h4>Statement and provenance</h4><p>A claim summary with its source and mathematical notation, where supplied.</p></div></div><div class="check-row"><span class="check-icon">✓</span><div><h4>Separate evidence types</h4><p>Observations, assumptions, derived claims and simulations keep their own record kinds.</p></div></div><div class="check-row"><span class="check-icon amber">○</span><div><h4>Formal proof status</h4><p>Conditional probes exist. A full-law proof is not reported.</p></div></div><div class="check-row"><span class="check-icon amber">○</span><div><h4>Signature and publication</h4><p>'+((D.live&&D.totals)?(D.totals.production+' production-registry URIs and '+D.totals.testRegistry+' test-registry URIs. This page does not sign nanopublications.'):'All 2,608 project records remain unsigned drafts in this snapshot.')+'</p></div></div>'+button('Check local record structure','check-record',true,'check')+'<div id="check-result" class="check-result hide" role="status"></div>'+button('Export record summary','export-record',false,'download')+'</section><section class="panel assessment"><div class="eyebrow">Data readiness / Darwin collection</div><div class="score">'+(((D.totals||{}).resolvabilityLow!=null)?((D.totals||{}).resolvabilityLow+' <span class="muted">–</span> '+(D.totals||{}).resolvabilityHigh):'0.12 <span class="muted">–</span> 0.36')+'</div><p>Testability range on the Darwin claim records. These are record fields, not a new assessment run.</p><div class="score-scale" style="'+((D.totals&&D.totals.resolvabilityLow!=null)?'--low:'+(D.totals.resolvabilityLow*100)+'%;--span:'+((D.totals.resolvabilityHigh-D.totals.resolvabilityLow)*100)+'%;':'')+'"></div><div class="score-labels"><span>0 / unresolved</span><span>1 / resolvable</span></div></section></aside></div><section class="panel" id="trail-panel" aria-label="Nanopub provenance trail"></section>';
-    drawRecordContent();$('#record-select').onchange=e=>{selected=e.target.value;renderEvidence();};$$('[data-record-tab]').forEach(b=>{b.onclick=()=>setRecordTab(b.dataset.recordTab);b.onkeydown=e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const ids=Object.keys(tabLabels),i=ids.indexOf(recordTab),next=e.key==='Home'?ids[0]:e.key==='End'?ids[ids.length-1]:ids[(i+(e.key==='ArrowRight'?1:ids.length-1))%ids.length];setRecordTab(next);$('#tab-'+next).focus();};});$$('[data-provenance]').forEach(g=>{g.onclick=()=>setRecordTab(g.dataset.provenance);g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setRecordTab(g.dataset.provenance);}};});const trail=$('#trail-panel');if(trail&&!dossiers[c.id])trail.innerHTML='<div class="panel-title"><h3>Nanopub provenance trail</h3></div><div class="empty">Reading the nanopub trail…</div>';const loaded=await loadDossier(c.id);if(selected!==c.id)return;if(loaded)trailFocus=null;drawRecordContent();drawTrail();
+  const tabIcons={statement:'cells',evidence:'wave',assumptions:'enzyme',formal:'check',source:'external'};
+  const dossiers={},dossierPending={},dossierUnavailable={},evidenceChecks={};
+  let trailFocus=null,evidenceQuery='',evidenceSource='All',evidenceProof='All',evidenceLimit=40,evidenceFocus=false,evidenceBrowseOpen=false;
+  function evidenceOrigin(){const nano=D.nanopubs||{};const parts=[];if(D.source)parts.push('Each claim nanopub file is read from '+D.source+'.');if(nano.note)parts.push(nano.note);else if(nano.repo)parts.push('The nanopub skill is '+nano.repo+'.');return parts.join(' ');}
+  function evidenceText(value){if(value==null)return '';if(typeof value==='object')return JSON.stringify(value,null,2);return String(value);}
+  function evidenceHref(value){if(typeof value!=='string'||!value.trim())return null;try{const u=new URL(value,location.href);return ['https:','http:'].includes(u.protocol)?u.href:null;}catch(e){return null;}}
+  function evidenceLink(href,label,cls='ev-source-link'){const safe=evidenceHref(href);return safe?'<a class="'+cls+'" href="'+esc(safe)+'" target="_blank" rel="noopener noreferrer">'+esc(label||href)+'</a>':esc(label||href||'');}
+  function evidenceFields(c,key){const section=dossiers[c.id]?.sections?.[key];return Array.isArray(section?.fields)?section.fields:[];}
+  function evidenceSummary(c,key){const fields=evidenceFields(c,key);if(fields.length)return fields.slice(0,2).map(f=>evidenceText(f.value)).join(' · ');return evidenceText(key==='statement'?c.summary:key==='source'?c.provenance:c[key]);}
+  function evidenceExcerpt(text,max=220){if(text.length<=max)return text;const cut=text.slice(0,max),space=cut.lastIndexOf(' ');return cut.slice(0,space>max*.6?space:max)+'…';}
+  function evidenceFiltered(){const q=evidenceQuery.trim().toLowerCase();return D.claims.filter(c=>(evidenceSource==='All'||c.source===evidenceSource)&&(evidenceProof==='All'||(c.proof||'Not specified')===evidenceProof)&&(!q||[c.id,c.title,c.source,c.summary,c.area,c.proof,c.status,c.nanopub].map(evidenceText).join(' ').toLowerCase().includes(q)));}
+  function evidenceOptions(values,chosen,all){return '<option value="All">'+all+'</option>'+[...new Set(values)].filter(Boolean).sort().map(v=>'<option value="'+esc(v)+'"'+(v===chosen?' selected':'')+'>'+esc(v)+'</option>').join('');}
+  function evidenceCollection(){
+    const t=D.totals||{},live=!!D.live;
+    const value=(key,fallback)=>t[key]!=null?t[key]:live?null:fallback;
+    const metrics=[
+      [value('nanopubs',2608),'Nanopub records',live?'Claims with a nanopub URI':'Unsigned drafts · project snapshot'],
+      [value('assessments',494),'Darwin assessments',live?'Stored assessor scores':'Collection-level assessments'],
+      [value('tested',3),'Registered claim tests',t.testedNote||'Tests reported in the project'],
+      [value('production',0),'Production URIs',t.testRegistry!=null?fmt(t.testRegistry)+' test-registry URIs':'Publication pending']
+    ];
+    const low=value('resolvabilityLow',.12),high=value('resolvabilityHigh',.36);
+    const range=typeof low==='number'&&typeof high==='number'&&low>=0&&high<=1&&high>=low;
+    return '<section class="ev-collection" aria-label="Collection context"><div class="ev-collection-label"><strong>Collection context</strong><span>'+(live?'Product-service records':'Project snapshot · collection totals')+'</span></div><div class="ev-metrics">'+metrics.map(x=>'<div class="ev-metric"><strong>'+esc(fmt(x[0]))+'</strong><div><b>'+esc(x[1])+'</b><small>'+esc(x[2])+'</small></div></div>').join('')+'</div><details class="ev-collection-details"><summary>Understand the collection metrics</summary><div class="ev-readiness"><div><h3>Darwin collection · testability</h3><p>These totals describe the collection. They do not measure the support for the selected claim. The range reflects stored assessment fields; it is not a confidence interval or a new evaluation.</p>'+(evidenceOrigin()?'<p>'+esc(evidenceOrigin())+'</p>':'')+'</div><div>'+(range?'<div class="ev-range-head"><strong>'+esc(low)+'–'+esc(high)+'</strong><span>Reported testability range</span></div><div class="score-scale" role="img" aria-label="Reported testability ranges from '+esc(low)+' to '+esc(high)+' on a zero to one scale" style="--low:'+(low*100)+'%;--span:'+((high-low)*100)+'%"></div><div class="score-labels"><span>0 · unresolved</span><span>1 · resolvable</span></div>':'<p>A testability range was not supplied in this response.</p>')+'</div></div></details></section>';
   }
-  const dossiers={};let trailFocus=null;
-  function frame(fields){if(!fields||!fields.length)return '<p class="record-note">This part of the nanopub does not carry a separate statement.</p>';return '<div class="detail-frame">'+fields.map(f=>'<div class="row"><span>'+esc(f.label)+'</span><p>'+(f.href?'<a href="'+esc(f.href)+'" target="_blank" rel="noopener noreferrer">'+esc(f.value)+'</a>':esc(f.value))+'</p></div>').join('')+'</div>';}
-  async function loadDossier(id){if(dossiers[id])return dossiers[id];const dossier=await readJson(['/v1/product/claims/'+encodeURIComponent(id)+'/dossier','data/claims/'+encodeURIComponent(id)+'/dossier.json']);if(dossier)dossiers[id]=dossier;return dossier;}
-  function setRecordTab(tab){recordTab=tab;const dossier=dossiers[selected];if(dossier&&dossier.trail){const match=dossier.trail.find(n=>n.section===tab);if(match)trailFocus=match.id;} $$('[data-record-tab]').forEach(b=>{const a=b.dataset.recordTab===tab;b.classList.toggle('active',a);b.setAttribute('aria-selected',String(a));b.tabIndex=a?0:-1;});const panel=$('#record-content');if(panel)panel.setAttribute('aria-labelledby','tab-'+tab);drawRecordContent();drawTrail();}
-  function drawRecordContent(){const c=claim();const dossier=dossiers[c.id];const section=dossier&&dossier.sections&&dossier.sections[recordTab];if(section&&section.fields&&section.fields.length){$('#record-content').innerHTML='<h3>'+esc(section.title||tabLabels[recordTab])+'</h3>'+frame(section.fields)+(recordTab==='statement'&&c.math?'<div class="equation '+(c.math.length>28?'long':'')+'">'+esc(c.math)+'</div>':'');return;}let text=c[recordTab];if(recordTab==='statement')text=c.summary;$('#record-content').innerHTML='<h3>'+tabLabels[recordTab]+'</h3><p>'+(dossier?'Reading this section from the nanopub…':esc(text))+'</p>'+(recordTab==='statement'?'<div class="equation '+(c.math.length>28?'long':'')+'">'+esc(c.math)+'</div>':'');}
-  function drawTrail(){const panel=$('#trail-panel');if(!panel)return;const dossier=dossiers[selected];if(!dossier||!dossier.trail||!dossier.trail.length){panel.innerHTML='<div class="panel-title"><h3>Nanopub provenance trail</h3></div><div class="empty">No nanopub trail is available for this claim yet.</div>';return;}if(!trailFocus||!dossier.trail.some(n=>n.id===trailFocus))trailFocus=dossier.trail[0].id;const node=dossier.trail.find(n=>n.id===trailFocus)||dossier.trail[0];panel.innerHTML='<div class="panel-title"><h3>Nanopub provenance trail</h3><small>'+esc(dossier.file||'claims.json')+'</small></div><div class="trail-board" role="list">'+dossier.trail.map((n,i)=>(i?'<span class="trail-link" aria-hidden="true">→</span>':'')+'<button type="button" class="trail-node'+(n.id===trailFocus?' active':'')+'" data-trail="'+esc(n.id)+'"><small>'+esc(n.kicker)+'</small><strong>'+esc(n.title)+'</strong>'+(n.summary?'<em>'+esc(n.summary)+'</em>':'')+'</button>').join('')+'</div><div class="trail-detail"><h3 style="font-size:12px;margin:0 0 8px">'+esc(node.kicker)+'</h3>'+frame(node.fields)+'</div>';$$('[data-trail]').forEach(b=>b.onclick=()=>{trailFocus=b.dataset.trail;const chosen=dossier.trail.find(n=>n.id===trailFocus);if(chosen&&chosen.section&&tabLabels[chosen.section]&&chosen.section!==recordTab){recordTab=chosen.section;$$('[data-record-tab]').forEach(btn=>{const active=btn.dataset.recordTab===recordTab;btn.classList.toggle('active',active);btn.setAttribute('aria-selected',String(active));btn.tabIndex=active?0:-1;});drawRecordContent();}drawTrail();});}
+  function renderEvidence(){
+    if(!tabLabels[recordTab])recordTab='statement';
+    $('#view').innerHTML='<div class="ev-page"><header class="ev-heading"><div><div class="eyebrow">02 / Evidence & proofs</div><h1>Evidence, <em>in context.</em></h1><p>Follow each claim from its source to the evidence, assumptions and formal work that support it.</p></div>'+button('How to read a record','ontology',false,'external')+'</header>'+evidenceCollection()+'<div class="ev-workspace'+(evidenceFocus?' is-focused':'')+'" id="ev-workspace"><aside class="ev-library" id="ev-library" aria-label="Browse claims" data-open="'+evidenceBrowseOpen+'"><div class="ev-library-top"><h2>Claim navigator</h2><span class="ev-count-badge">'+D.claims.length+'</span><button type="button" class="ev-browser-toggle" id="ev-browser-toggle" aria-controls="ev-browser-body" aria-expanded="'+evidenceBrowseOpen+'">Browse'+icon('arrow')+'</button></div><div class="ev-browser-body" id="ev-browser-body"><label class="ev-search">'+icon('search')+'<input type="search" id="evidence-search" placeholder="Find a claim…" aria-label="Search claims by title, source, topic or ID" value="'+esc(evidenceQuery)+'"><kbd aria-hidden="true">/</kbd></label><div class="ev-filters"><label>Source<select id="evidence-source">'+evidenceOptions(D.claims.map(c=>c.source),evidenceSource,'All sources')+'</select></label><label>Proof status<select id="evidence-proof">'+evidenceOptions(D.claims.map(c=>c.proof||'Not specified'),evidenceProof,'All statuses')+'</select></label></div><div class="ev-list-caption"><span id="evidence-count" role="status" aria-live="polite"></span><button type="button" class="ev-text-button" id="evidence-clear">Reset filters</button></div><nav class="ev-claim-list" id="evidence-list" aria-label="Matching claims"></nav><div class="ev-library-foot">'+(D.live?'Browse records returned by the product service.':'Included claim summaries. Collection totals above cover the wider project.')+'</div></div></aside><article class="ev-reader" id="evidence-reader" aria-label="Selected claim"></article></div></div>';
+    $('#evidence-search').oninput=e=>{evidenceQuery=e.target.value;evidenceLimit=40;drawEvidenceList();drawEvidenceStepper();};
+    $('#evidence-source').onchange=e=>{evidenceSource=e.target.value;evidenceLimit=40;drawEvidenceList();drawEvidenceStepper();};
+    $('#evidence-proof').onchange=e=>{evidenceProof=e.target.value;evidenceLimit=40;drawEvidenceList();drawEvidenceStepper();};
+    $('#evidence-clear').onclick=resetEvidenceFilters;
+    $('#ev-browser-toggle').onclick=()=>setEvidenceBrowser(!evidenceBrowseOpen);
+    drawEvidenceList();drawEvidenceReader();refreshEvidenceDossier(selected);
+  }
+  function setEvidenceBrowser(open){evidenceBrowseOpen=open;const el=$('#ev-library'),b=$('#ev-browser-toggle');if(el)el.dataset.open=String(open);if(b){b.setAttribute('aria-expanded',String(open));b.innerHTML=(open?'Close':'Browse')+icon('arrow');}}
+  function resetEvidenceFilters(){evidenceQuery='';evidenceSource='All';evidenceProof='All';evidenceLimit=40;$('#evidence-search').value='';$('#evidence-source').value='All';$('#evidence-proof').value='All';drawEvidenceList();drawEvidenceStepper();}
+  function drawEvidenceList(){
+    const host=$('#evidence-list');if(!host)return;const list=evidenceFiltered(),shown=list.slice(0,evidenceLimit),filtered=!!evidenceQuery.trim()||evidenceSource!=='All'||evidenceProof!=='All';
+    $('#evidence-count').textContent=list.length+' of '+D.claims.length+' claims'+(shown.length<list.length?' · '+shown.length+' shown':'');
+    $('#evidence-clear').hidden=!filtered;
+    host.innerHTML=shown.length?shown.map(c=>'<button type="button" class="ev-claim'+(c.id===selected?' is-selected':'')+'" data-evidence-claim="'+esc(c.id)+'"'+(c.id===selected?' aria-current="true"':'')+'><span class="ev-claim-source"><span>'+esc(c.source||'Source not specified')+'</span>'+icon('arrow')+'</span><strong>'+esc(c.title||c.id)+'</strong><span class="ev-claim-status">'+esc(c.proof||'Formal status not specified')+'</span></button>').join('')+(shown.length<list.length?'<button type="button" class="button ev-load-more" id="evidence-load-more">Show '+Math.min(40,list.length-shown.length)+' more claims</button>':''):'<div class="ev-empty"><strong>No matching claims</strong>Try a shorter search or reset your filters.<br><button type="button" class="ev-text-button" id="evidence-empty-reset">Reset filters</button></div>';
+    $$('[data-evidence-claim]').forEach(b=>{b.onclick=()=>selectEvidenceClaim(b.dataset.evidenceClaim);b.onkeydown=e=>{if(!['ArrowDown','ArrowUp','Home','End'].includes(e.key))return;e.preventDefault();const buttons=$$('[data-evidence-claim]'),i=buttons.indexOf(b),n=e.key==='Home'?0:e.key==='End'?buttons.length-1:(i+(e.key==='ArrowDown'?1:buttons.length-1))%buttons.length;buttons[n]?.focus();};});
+    const more=$('#evidence-load-more');if(more)more.onclick=()=>{const oldCount=shown.length;evidenceLimit+=40;const top=host.scrollTop;drawEvidenceList();host.scrollTop=top;$$('[data-evidence-claim]')[oldCount]?.focus();};
+    const reset=$('#evidence-empty-reset');if(reset)reset.onclick=resetEvidenceFilters;
+  }
+  function selectEvidenceClaim(id){
+    if(!D.claims.some(c=>c.id===id))return;
+    const scroll=$('#evidence-list')?.scrollTop||0;selected=id;trailFocus=null;const position=evidenceFiltered().findIndex(c=>c.id===id);if(position>=evidenceLimit)evidenceLimit=Math.ceil((position+1)/40)*40;drawEvidenceList();if($('#evidence-list'))$('#evidence-list').scrollTop=scroll;
+    drawEvidenceReader();refreshEvidenceDossier(id);
+    if(window.innerWidth<=760){setEvidenceBrowser(false);$('#evidence-title')?.focus({preventScroll:true});$('#evidence-reader')?.scrollIntoView({block:'start',behavior:'auto'});}
+    else $$('[data-evidence-claim]').find(b=>b.dataset.evidenceClaim===id)?.focus({preventScroll:true});
+  }
+  function evidenceState(c){const d=dossiers[c.id],fields=evidenceFields(c,'evidence'),n=Array.isArray(d?.trail)?d.trail.length:0;return [
+    ['evidence','wave','Evidence',fields.length?'Evidence fields available':c.evidence?'Summary available':'Not supplied'],
+    ['formal','check','Formal status',c.proof||'Not specified'],
+    ['source','external','Provenance',n?n+' linked '+(n===1?'record':'records'):c.nanopub?'Nanopub linked':'Source summary']
+  ].map(x=>'<button type="button" class="ev-state" data-open-record="'+x[0]+'"><span class="ev-state-label">'+icon(x[1])+x[2]+'</span><strong>'+esc(x[3])+'</strong></button>').join('');}
+  function drawEvidenceReader(){
+    const host=$('#evidence-reader');if(!host)return;const c=claim(),d=dossiers[c.id];
+    host.innerHTML='<div class="ev-reader-top"><div class="ev-breadcrumb"><span>Claims</span><i></i><span>'+esc(c.source||'Unspecified source')+'</span></div><div class="ev-reader-tools"><button type="button" class="ev-focus-button" id="evidence-focus" aria-pressed="'+evidenceFocus+'">'+icon('external')+'<span>'+(evidenceFocus?'Show claim navigator':'Focus view')+'</span></button><div class="ev-stepper" id="evidence-stepper"></div></div></div><header class="ev-record-header"><div class="ev-record-kicker"><span class="ev-mode">'+(d?'Source record':D.live?'Claim record':'Curated summary')+'</span><span> / </span><span class="ev-record-id">'+esc(c.id)+'</span></div><h2 id="evidence-title" tabindex="-1">'+esc(c.title||c.id)+'</h2><p class="ev-record-meta">'+[c.area,c.year,c.record].filter(Boolean).map(esc).join(' · ')+'</p></header><div class="ev-state-grid" id="evidence-states">'+evidenceState(c)+'</div><div class="ev-record-actions"><div class="ev-action-buttons">'+button('Check record','check-record',true,'check')+button('Export record','export-record',false,'download')+'</div><p class="ev-data-note">'+(d?'Inspect fields from the source record.':'Summary fields remain available offline.')+'</p></div><div class="ev-check-result hide" id="check-result" role="status" aria-live="polite"></div><div class="ev-record-tabs" role="tablist" aria-label="Claim record sections">'+Object.entries(tabLabels).map(([id,label])=>'<button type="button" role="tab" id="tab-'+id+'" aria-controls="record-content" tabindex="'+(id===recordTab?'0':'-1')+'" aria-selected="'+(id===recordTab)+'" class="'+(id===recordTab?'active':'')+'" data-record-tab="'+id+'">'+icon(tabIcons[id])+label+'</button>').join('')+'</div><section class="ev-record-content" id="record-content" role="tabpanel" tabindex="0" aria-labelledby="tab-'+recordTab+'"></section><footer class="ev-record-footer"><span id="evidence-record-origin">'+(d?'Source dossier loaded':D.live?'Product-service claim summary':'Project snapshot · claim summary')+'</span><span>Evidence, formal proof and publication status remain distinct.</span></footer>';
+    $('#evidence-focus').onclick=()=>{evidenceFocus=!evidenceFocus;$('#ev-workspace').classList.toggle('is-focused',evidenceFocus);const b=$('#evidence-focus');b.setAttribute('aria-pressed',String(evidenceFocus));b.innerHTML=icon('external')+'<span>'+(evidenceFocus?'Show claim navigator':'Focus view')+'</span>';};
+    $$('[data-record-tab]').forEach(b=>{b.onclick=()=>setRecordTab(b.dataset.recordTab);b.onkeydown=e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const ids=Object.keys(tabLabels),i=ids.indexOf(recordTab),next=e.key==='Home'?ids[0]:e.key==='End'?ids.at(-1):ids[(i+(e.key==='ArrowRight'?1:ids.length-1))%ids.length];setRecordTab(next);$('#tab-'+next)?.focus();};});
+    bindEvidenceJumps();drawEvidenceStepper();drawRecordContent();drawEvidenceCheck();if(recordTab==='formal')refreshEvidenceModel(c.id);
+  }
+  function drawEvidenceStepper(){const el=$('#evidence-stepper');if(!el)return;const list=evidenceFiltered(),i=list.findIndex(c=>c.id===selected);el.innerHTML='<span>'+(i>=0?(i+1)+' / '+list.length:'Outside filters')+'</span><button type="button" class="previous" id="evidence-prev" aria-label="Previous matching claim"'+(i<=0?' disabled':'')+'>'+icon('arrow')+'</button><button type="button" id="evidence-next" aria-label="Next matching claim"'+(i<0||i>=list.length-1?' disabled':'')+'>'+icon('arrow')+'</button>';$('#evidence-prev').onclick=()=>{if(i>0)stepEvidenceClaim(list[i-1].id,'evidence-prev');};$('#evidence-next').onclick=()=>{if(i>=0&&i<list.length-1)stepEvidenceClaim(list[i+1].id,'evidence-next');};}
+  function stepEvidenceClaim(id,focus){selectEvidenceClaim(id);$('#'+focus)?.focus({preventScroll:true});}
+  function bindEvidenceJumps(){$$('[data-open-record]').forEach(b=>b.onclick=()=>{setRecordTab(b.dataset.openRecord);$('#tab-'+recordTab)?.focus({preventScroll:true});});}
+  async function loadDossier(id){
+    if(dossiers[id])return dossiers[id];if(dossierUnavailable[id])return null;if(dossierPending[id])return dossierPending[id];
+    dossierPending[id]=(async()=>{try{const body=await readJson(['/v1/product/claims/'+encodeURIComponent(id)+'/dossier','data/claims/'+encodeURIComponent(id)+'/dossier.json']);if(!body||typeof body!=='object'||Array.isArray(body))throw new Error('Invalid dossier');dossiers[id]=body;return body;}catch(e){dossierUnavailable[id]=true;return null;}finally{delete dossierPending[id];}})();return dossierPending[id];
+  }
+  async function refreshEvidenceDossier(id){const p=loadDossier(id);if(selected===id&&recordTab==='source')drawTrail();await p;if(selected!==id||!$('#evidence-reader'))return;const d=dossiers[id];$('#evidence-states').innerHTML=evidenceState(claim());bindEvidenceJumps();const origin=$('#evidence-record-origin');if(origin)origin.textContent=d?'Source dossier loaded':D.live?'Product-service claim summary · linked dossier unavailable':'Project snapshot · claim summary';const mode=$('#evidence-reader .ev-mode'),note=$('#evidence-reader .ev-data-note');if(d&&mode)mode.textContent='Source record';if(d&&note)note.textContent='Inspect fields from the source record.';drawRecordContent();}
+  async function refreshEvidenceModel(id){if(lawModels[id]||lawPending[id]||lawFailed[id]||location.protocol==='file:')return;await ensureModel(id);if(selected===id&&recordTab==='formal'&&$('#evidence-reader'))drawRecordContent();}
+  function frame(fields){
+    if(!Array.isArray(fields)||!fields.length)return '<div class="ev-callout"><p>No separate fields are supplied for this part of the record.</p></div>';
+    return '<dl class="ev-fields">'+fields.map(f=>{const raw=evidenceText(f.value),value=raw||'Not provided',safe=f.href&&evidenceHref(f.href);let content=safe?evidenceLink(safe,value):typeof f.value==='object'&&f.value!==null?'<pre>'+esc(value)+'</pre>':esc(value);if(value.length>1000)content='<details class="ev-long-field"><summary>Show full '+esc(f.label||'value')+' · '+value.length.toLocaleString('en-US')+' characters</summary>'+content+'</details>';return '<div class="ev-field"><dt>'+esc(f.label||'Field')+'</dt><dd>'+content+'</dd></div>';}).join('')+'</dl>';
+  }
+  function setRecordTab(tab){if(!tabLabels[tab])return;recordTab=tab;$$('[data-record-tab]').forEach(b=>{const a=b.dataset.recordTab===tab;b.classList.toggle('active',a);b.setAttribute('aria-selected',String(a));b.tabIndex=a?0:-1;});const panel=$('#record-content');if(panel)panel.setAttribute('aria-labelledby','tab-'+tab);drawRecordContent();if(tab==='formal')refreshEvidenceModel(selected);}
+  function evidenceSection(c,key){const fields=evidenceFields(c,key),fallback=evidenceText(key==='statement'?c.summary:key==='source'?c.provenance:c[key]);return fields.length?frame(fields):fallback?'<div class="ev-prose">'+esc(fallback)+'</div>':'<div class="ev-callout"><p>No '+esc(key==='formal'?'formal-status':key)+' details are supplied for this claim.</p></div>';}
+  function evidenceIntro(title,description,number){return '<div class="ev-section-intro"><div><h3>'+title+'</h3><p>'+description+'</p></div><span class="ev-section-number">'+number+'</span></div>';}
+  function evidencePreview(c,key,title,sub){return '<button type="button" class="ev-section-card" data-open-record="'+key+'"><span class="ev-card-label">'+title+icon('arrow')+'</span><p>'+esc(evidenceExcerpt(evidenceSummary(c,key)||'No details supplied.'))+'</p><small>'+sub+'</small></button>';}
+  function evidenceModelPrograms(c){const model=lawModels[c.id];if(!model)return '<div class="ev-model-links"><h4>Linked formal work</h4><p>'+(location.protocol==='file:'?'Open the connected platform to retrieve linked Lean programs. The supplied formal-status summary is shown above.':lawFailed[c.id]?'Linked program details could not be retrieved. The supplied formal-status record remains available above.':'Reading linked Lean programs…')+'</p></div>';const programs=Array.isArray(model.lean)?model.lean:[];return '<div class="ev-model-links"><h4>Linked formal work'+(programs.length?' · '+programs.length:'')+'</h4>'+(programs.length?'<ul class="ev-model-list">'+programs.map(p=>'<li>'+(evidenceHref(p.href)?'<a href="'+esc(evidenceHref(p.href))+'" target="_blank" rel="noopener noreferrer"><span>'+esc(p.name||p.href)+'</span>'+icon('external')+'</a>':'<span class="ev-model-name">'+esc(p.name||'Unnamed program')+'</span>')+'</li>').join('')+'</ul><p style="margin-top:12px">'+esc(model.leanState==='compiled'?'The model service reports these programs as compiled. Read their definitions and hypotheses to understand the scope.':model.leanState==='linked'?'Source programs are linked. Compilation is not established by a link alone.':'These entries are reported by the model service. No additional proof status is inferred.')+'</p>':'<p>No Lean programs are linked in this model response.</p>')+'</div>';}
+  function drawRecordContent(){
+    const host=$('#record-content');if(!host||!$('#evidence-reader'))return;const c=claim();
+    if(recordTab==='statement')host.innerHTML=evidenceIntro('The claim at a glance','Read the statement, then inspect the conditions and support attached to it.','01 / 05')+evidenceSection(c,'statement')+(c.math?'<div class="ev-equation'+(c.math.length>45?' long':'')+'"><small>Mathematical statement · as supplied</small><p>'+esc(c.math)+'</p></div>':'')+'<div class="ev-section-cards">'+evidencePreview(c,'evidence','Supporting evidence','Open evidence')+evidencePreview(c,'formal','Formal work','Open proof status')+evidencePreview(c,'assumptions','Scope & assumptions','Open conditions')+evidencePreview(c,'source','Source & provenance','Open sources and trail')+'</div>';
+    else if(recordTab==='evidence')host.innerHTML=evidenceIntro('What supports this claim?','Observations, assessments and simulations are shown with their stated scope.','02 / 05')+evidenceSection(c,'evidence')+'<div class="ev-callout">'+icon('wave')+'<p><strong>Read support at the right scale.</strong> Collection-wide counts and assessments do not establish a result for this individual claim.</p></div>';
+    else if(recordTab==='assumptions')host.innerHTML=evidenceIntro('The conditions that matter','Scope, inputs and assumptions determine where a statement applies.','03 / 05')+evidenceSection(c,'assumptions')+'<div class="ev-callout">'+icon('enzyme')+'<p>Conditions shown here come from the supplied record. Any missing definitions or hypotheses remain unspecified.</p></div>';
+    else if(recordTab==='formal')host.innerHTML=evidenceIntro('What has been formalized?','Inspect the stated proof status separately from biological observations.','04 / 05')+'<div class="ev-proof-status"><span class="ev-proof-symbol" aria-hidden="true">∴</span><div><small>Reported formal status</small><strong>'+esc(c.proof||'Not specified')+'</strong></div></div>'+evidenceSection(c,'formal')+evidenceModelPrograms(c)+'<div class="ev-callout">'+icon('check')+'<p>A linked program, numerical result or conditional probe has the scope of its own definitions. It does not by itself establish a complete biological law.</p></div>';
+    else if(recordTab==='source')host.innerHTML=evidenceIntro('From source to claim','Inspect the original attribution and follow each linked provenance record.','05 / 05')+evidenceSection(c,'source')+(c.nanopub?'<div class="ev-source-id"><small>Nanopublication URI</small>'+evidenceLink(c.nanopub,c.nanopub)+'</div>':'')+'<section id="trail-panel" class="ev-trail" aria-label="Provenance trail"></section>';
+    bindEvidenceJumps();if(recordTab==='source')drawTrail();
+  }
+  function drawTrail(){
+    const panel=$('#trail-panel');if(!panel)return;const dossier=dossiers[selected],trail=Array.isArray(dossier?.trail)?dossier.trail:[];
+    if(!trail.length){panel.innerHTML='<div class="ev-trail-head"><div><h3>Provenance trail</h3><p>'+(dossierPending[selected]?'Loading linked source records…':dossier?'This dossier does not include a linked provenance trail.':'No linked trail is available in this view. The source summary above remains available.')+'</p></div></div>';return;}
+    if(!trail.some(n=>n.id===trailFocus))trailFocus=trail[0].id;const node=trail.find(n=>n.id===trailFocus)||trail[0];
+    panel.innerHTML='<div class="ev-trail-head"><div><h3>Provenance trail</h3><p>Select a step to inspect its fields.</p></div><small>'+esc(dossier.file||'Source dossier')+'</small></div><div class="ev-trail-layout"><ol class="ev-trail-list">'+trail.map((n,i)=>'<li><button type="button" class="ev-trail-step'+(n.id===trailFocus?' active':'')+'" data-trail="'+esc(n.id)+'" aria-pressed="'+(n.id===trailFocus)+'"><span class="ev-trail-index">'+String(i+1).padStart(2,'0')+'</span><span><small>'+esc(n.kicker||'Record')+'</small><strong>'+esc(n.title||n.id)+'</strong></span></button></li>').join('')+'</ol><div class="ev-trail-detail" id="ev-trail-detail" aria-live="polite"><h4>'+esc(node.title||node.kicker||'Record detail')+'</h4>'+(node.summary?'<p>'+esc(node.summary)+'</p>':'')+frame(node.fields)+(node.section&&tabLabels[node.section]&&node.section!=='source'?'<button type="button" class="ev-text-button" data-open-record="'+esc(node.section)+'">Open '+esc(tabLabels[node.section].toLowerCase())+' →</button>':'')+'</div></div>';
+    $$('[data-trail]').forEach(b=>{b.onclick=()=>{trailFocus=b.dataset.trail;drawTrail();$$('[data-trail]').find(x=>x.dataset.trail===trailFocus)?.focus({preventScroll:true});};b.onkeydown=e=>{if(!['ArrowDown','ArrowUp','Home','End'].includes(e.key))return;e.preventDefault();const buttons=$$('[data-trail]'),i=buttons.indexOf(b),n=e.key==='Home'?0:e.key==='End'?buttons.length-1:(i+(e.key==='ArrowDown'?1:buttons.length-1))%buttons.length;buttons[n]?.focus();};});bindEvidenceJumps();
+  }
+  function evidenceBundle(){const c=claim();return {kind:'delphi_claim_evidence_export',exportedAt:new Date().toISOString(),dataSource:D.live?'product_service':'project_snapshot',projectSnapshot:D.date||null,sourceDocument:D.source||null,claim:c,dossier:dossiers[c.id]||null,model:lawModels[c.id]||null,lastCheck:evidenceChecks[c.id]||null,scope:'Export of the loaded claim and linked records. This export does not sign a nanopublication or establish a new proof or biological validation.'};}
+  function drawEvidenceCheck(){const el=$('#check-result');if(!el)return;const result=evidenceChecks[selected],b=$('[data-action="check-record"]');if(b){b.disabled=result?.state==='pending';b.innerHTML=(b.disabled?'Checking…':'Check record')+icon('check');}if(!result){el.classList.add('hide');el.textContent='';return;}el.classList.remove('hide');el.innerHTML='<strong>'+esc(result.title)+'</strong>'+esc(result.message);}
+  async function checkEvidenceRecord(){
+    const c=claim(),id=c.id;if(evidenceChecks[id]?.state==='pending')return;
+    evidenceChecks[id]={state:'pending',title:'Checking record',message:'Reading the result from the product service.'};drawEvidenceCheck();
+    try{if(location.protocol==='file:')throw new Error('Offline');const response=await fetch('/v1/product/claims/'+encodeURIComponent(id)+'/check',{method:'POST'});const body=await response.json();evidenceChecks[id]={state:response.ok?'complete':'rejected',title:response.ok?'Service check result':'Service check rejected',message:typeof body.message==='string'?body.message:response.ok?'Check completed. The service did not provide a detail message.':'The product service rejected this check.'};}
+    catch(e){const fields=[c.summary,c.provenance,c.assumptions,c.evidence,c.formal],present=fields.filter(v=>typeof v==='string'&&v.trim()).length;evidenceChecks[id]={state:'local',title:'Local structure check',message:present+' of 5 summary fields present. The product service is unavailable, so no claim test was recomputed. This checks field presence only.'};}
+    if(selected===id)drawEvidenceCheck();
+  }
+
   function provenanceSvg(){return '<svg viewBox="0 0 620 170" aria-label="Source leads to claim; assumptions and evidence attach separately; formal status remains distinct"><defs><marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="m0 0 6 3-6 3" fill="#C3CDDA"/></marker></defs><g fill="none" stroke="#C3CDDA" marker-end="url(#a)"><path d="M130 85H230"/><path d="M360 85H475"/><path d="M295 43V62"/><path d="M295 107v19"/></g>'+[['source',20,62,110,45,'Source','Text / provenance'],['statement',230,62,130,45,'Claim','delphi:Claim'],['assumptions',230,2,130,41,'Assumptions','delphi:context'],['evidence',230,127,130,41,'Evidence','delphi:EvidenceItem'],['formal',475,62,125,45,'Formal status','Separate proof record']].map(([tab,x,y,w,h,a,b])=>'<g class="graph-node" data-provenance="'+tab+'" role="button" tabindex="0" aria-label="Inspect '+a+'"><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="5" fill="'+(a==='Claim'?'#2457D6':'#FFFFFF')+'" stroke="#D7DFE9"/><text x="'+(x+w/2)+'" y="'+(y+18)+'" text-anchor="middle" fill="'+(a==='Claim'?'#FFFFFF':'#142033')+'" font-size="10">'+a+'</text><text x="'+(x+w/2)+'" y="'+(y+31)+'" text-anchor="middle" fill="'+(a==='Claim'?'#D7DFE9':'#7B8798')+'" font-size="7.5">'+b+'</text></g>').join('')+'</svg>';}
   function renderDesign(){dispose();track='wing';$('#view').innerHTML=heading('03 / Generate from the mathematics','Explore the forms <em>a law allows.</em>','Move from a mathematical constraint to an executable experiment, with every result’s limits in view.','<div class="side-note">A launch prototype.<br>Nothing has been flown.</div>')+'<div class="track-content" id="track-content"></div>';wingTrack();}
   function frontierStrip(){return '<section class="frontier-strip"><div class="frontier-title"><div class="eyebrow">Delphi Frontier</div><h3>The next question.</h3></div><p>Every proof, simulation or experiment returns to the claim it tests. Frontier assigns a bounded next action and keeps review attached to the result.</p><div class="frontier-metrics"><div><strong>'+((D.frontier&&D.frontier.problem_count)||6)+'</strong><span>Seed problems</span></div><div><strong>'+((D.frontier&&D.frontier.mcp_tools&&D.frontier.mcp_tools.length)||8)+'</strong><span>Read-only MCP tools</span></div></div>'+button('Inspect the loop','frontier')+'</section>';}
@@ -643,8 +927,8 @@
     'explore-design':()=>{track='wing';go('design');},
     sources,frontier,
     ontology:()=>modal('A shared language for evidence.','<p>Project Delphi ontology v2.0 and the Knowledge Pixels nanopublication stack distinguish what a record says from how that statement is supported.</p><table><tr><th>Field or record</th><th>Purpose in the supplied description</th></tr><tr><td class="mono">delphi:Claim</td><td>The claim statement</td></tr><tr><td class="mono">skos:notation</td><td>Mathematics expressed as LaTeX</td></tr><tr><td class="mono">delphi:context</td><td>Assumptions and context, currently prose</td></tr><tr><td class="mono">delphi:EvidenceItem</td><td>Evidence with measurements and compute-run provenance</td></tr><tr><td class="mono">prov:wasSupportedBy</td><td>The supporting relationship named in the brief</td></tr></table><p>External identifiers from BioModels, UniProt, GO, ChEBI, Cellosaurus and QUDT remain unchanged. A matching label does not establish identity.</p><p>The source stack supports np check, template conformance, queries and numerical tests. The showcase’s local check only checks summary structure.</p>'),
-    'check-record':async ()=>{const el=$('#check-result');el.classList.remove('hide');el.textContent='Checking this claim against the local record…';try{const response=await fetch('/v1/product/claims/'+encodeURIComponent(selected)+'/check',{method:'POST'});const body=await response.json();el.textContent=body.message||(response.ok?'Check finished.':'The product service rejected this check.');}catch(e){const r=recordBundle(),fields=['summary','source','assumptionSummary','evidenceSummary','formalStatus'],ok=fields.every(k=>typeof r[k]==='string'&&r[k].length>0);el.textContent=ok?'5 of 5 summary fields present. The product service was not reachable, so this did not recompute a claim-test.':'The summary is missing a required field.';}},
-    'export-record':()=>download('delphi-'+selected+'-summary.json',recordBundle()),
+    'check-record':checkEvidenceRecord,
+    'export-record':()=>download('delphi-'+selected.replace(/[^a-zA-Z0-9_-]/g,'-')+'-evidence.json',evidenceBundle()),
     'toggle-motion':()=>{sim.running=!sim.running;const b=$('[data-action="toggle-motion"]');b.innerHTML=(sim.running?'Pause motion':'Resume motion')+icon(sim.running?'pause':'play');},
     'save-run':saveRun,
     'clear-runs':()=>{saved=[];try{localStorage.removeItem('delphi-explorations');}catch(e){}drawShelf();toast('Saved local explorations cleared.');},
